@@ -65,7 +65,7 @@ function connexion()
         if(!empty($_POST['login']) and !empty($_POST['password']))
         {
             $connexion=mysqli_connect('Localhost','root','','camping');
-            $requete= "SELECT login,password FROM utilisateurs WHERE login='".$_POST['login']."'";
+            $requete= "SELECT Id,login,password FROM utilisateurs WHERE login='".$_POST['login']."'";
             $query=mysqli_query($connexion,$requete);
             $resultat=mysqli_fetch_row($query);
 
@@ -79,11 +79,12 @@ function connexion()
 
             else
             {
-                if($_POST['login']==$resultat[0])
+                if($_POST['login']==$resultat[1])
                 {
-                    if(password_verify($password, $resultat[1]))
+                    if(password_verify($password, $resultat[2]))
                     {
                         session_start();
+                        $_SESSION['ID']=$resultat[0];
                         header('location:index.php');
                     }
                     else
