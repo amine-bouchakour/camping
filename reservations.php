@@ -51,8 +51,7 @@
 
 <?php
 
-
-
+session_start();
 
 if(isset($_POST['valider']))
 {
@@ -80,27 +79,86 @@ if(isset($_POST['valider']))
     {
         $option3=0;
     }
+    $duree=$_POST['dureesejour'];
+
+    $optiontotal= $option1 + $option2 + $option3;
+    $totalsejour=($optiontotal*$duree) + $duree*10;
 
     if(!empty($_POST['dureesejour']) and !empty($_POST['date']) and !empty($_POST['emplacement']) and !empty($_POST['habitat']))
     {
-        $duree=$_POST['dureesejour'];
         $date=$_POST['date'];
         $place=$_POST['emplacement'];
         $habitat=$_POST['habitat'];
 
-        $duree=$_POST['dureesejour'];
-        $optiontotal= $option1 + $option2 + $option3;
-        $totalsejour=($optiontotal*$duree) + $duree*10;
+        
 
         $connexion=mysqli_connect("Localhost","root","","camping");
-        $requete = "SELECT * FROM reservationplace WHERE emplacement='".$_POST['emplacement']."'";
+        $requete = "SELECT date,habitat,emplacement FROM reservationplace WHERE emplacement='".$_POST['emplacement']."'";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
-
         var_dump($resultat);
+
+        $j=count($resultat);
+        $placetotal=4;
+        $placedispo=4;
+        $i=0;
+
+
+
+        while($i<$j)
+        {
+
+            if($resultat[$i][1]='tente')
+            {
+                $resultat[$i][1]=1;
+                $placedispo=$placedispo - $resultat[$i][1];
+
+            }
+            if($resultat[$i][1]='cpgcar')
+            {
+                $resultat[$i][1]=2;
+                $placedispo=$placedispo - $resultat[$i][1];
+            }
+            
+            ++$i;
+
+        }
+
+        echo $placedispo.'<br/>';
+
+
+
+        if(isset($_POST['borne']))
+        {
+            $_POST['borne']='oui';
+        }
+        else{
+            $_POST['borne']='non';
+        }
+        if(isset($_POST['disco']))
+        {
+            $_POST['disco']='oui';
+        }
+        else{
+            $_POST['disco']='non';
+        }
+        if(isset($_POST['yfs']))
+        {
+            $_POST['yfs']='oui';
+        }
+        else{
+            $_POST['yfs']='non';
+        }
+
+
+        $connexion=mysqli_connect("Localhost","root","","camping");
+        $requete="INSERT INTO reservationplace (date,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$date."','".$place."','".$habitat."','".$_POST['dureesejour']."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
+        $query=mysqli_query($connexion,$requete);
+
+        echo 'reservation validé'.'<br/>';
         
-        echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-        echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
+        // echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
+        // echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
     }
     else
     {
@@ -109,6 +167,11 @@ if(isset($_POST['valider']))
 
 
 }
+
+
+    
+
+    
 
 
 
