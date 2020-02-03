@@ -85,6 +85,7 @@ function connexion()
                     {
                         session_start();
                         $_SESSION['ID']=$resultat[0];
+                        $_SESSION['login']=$resultat[1];
                         header('location:index.php');
                     }
                     else
