@@ -50,7 +50,8 @@ if (isset($_SESSION['login']))
     </form>
     <?php
 }
-else{
+else
+{
     echo 'La page est inacessible si vous n\'êtes connecté.';
 }
 ?>
