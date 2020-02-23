@@ -115,11 +115,11 @@ if(isset($_POST['valider']))
         while($i<$j)
         {
 
-            if($resultat[$i]=="cpgcar")
+            if($resultat[$i][0]=="cpgcar")
             {
                 
                 $placedispo=$placedispo - 2;
-                echo $resultat[$i].'<br/>';
+                echo $resultat[$i][0].'<br/>';
                 echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
 
@@ -131,7 +131,10 @@ if(isset($_POST['valider']))
                 echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
             }
-           
+           if($placedispo==0){
+           break;
+           }
+        
             
 
         }
@@ -166,7 +169,7 @@ if(isset($_POST['valider']))
             $_POST['yfs']='non';
         }
 
-        if(($placedispo>=2 and $_POST['habitat']='cpgcar') or ($placedispo>=1 and $_POST['habitat']='tente'))
+        if(($placedispo>=2 and $_POST['habitat']=='cpgcar') or ($placedispo>=1 and $_POST['habitat']=='tente'))
         {
 
             $connexion=mysqli_connect("Localhost","root","","camping");
