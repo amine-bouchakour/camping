@@ -120,7 +120,7 @@ if(isset($_POST['valider']))
                 
                 $placedispo=$placedispo - 2;
                 echo $resultat[$i].'<br/>';
-                // echo $placedispo.'<br/>';
+                //echo $placedispo.'<br/>';
                 ++$i;
 
             }
@@ -128,7 +128,7 @@ if(isset($_POST['valider']))
             {
                 $placedispo=$placedispo - 1;
                 echo $resultat[$i][0].'<br/>';
-                // echo $placedispo.'<br/>';
+                echo $placedispo.'<br/>';
                 ++$i;
             }
            
@@ -173,16 +173,16 @@ if(isset($_POST['valider']))
             $requete="INSERT INTO reservationplace (date,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$date."','".$place."','".$habitat."','".$_POST['dureesejour']."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
             $query=mysqli_query($connexion,$requete);
     
-            echo 'reservation validé'.'<br/>';
+            echo 'reservation validé'.'<br/>'.'<br/>';
         }
         else
         {
-            echo 'Il ne reste plus de place disponible à cette période'.'<br/>';
+            echo 'Il ne reste plus de place disponible à cette période'.'<br/>'.'<br/>';
         }
 
         
-        // echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-        // echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
+        echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
+        echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
     }
     else
     {
