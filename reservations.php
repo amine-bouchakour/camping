@@ -4,6 +4,18 @@
 session_start();
 if (isset($_SESSION['login']))
 {
+
+    $connexion=mysqli_connect("Localhost","root","","camping");
+    $requete = "SELECT jour,borne,disco,yfs FROM tarif";
+    $query=mysqli_query($connexion,$requete);
+    $resultat=mysqli_fetch_all($query);
+
+    // DEFINITION TARIF PAR REQUETE BDD
+    $tarifjour=$resultat[0][0];
+    $tarifborne=$resultat[0][1];
+    $tarifdisco=$resultat[0][2];
+    $tarifyfs=$resultat[0][3];
+
     ?>
     <head>
         <title>Réservation</title>
@@ -43,9 +55,9 @@ if (isset($_SESSION['login']))
             <option value="14">14</option>
         </select>
         <br>
-        Accès à la borne électrique (2€/jr)<input type="radio" name="borne" value="2"><br>
-        Accès au Disco-Club “Les girelles dansantes” (17€/jr)<input type="radio" name="disco" value="17"><br>
-        Accès aux activités Yoga, Frisbee et Ski Nautique (pack à 30€/jr)<input type="radio" name="yfs" value="30"><br>
+        Accès à la borne électrique (<?php echo $tarifborne; ?>€/jr)<input type="radio" name="borne" value="<?php echo $tarifborne ?>"><br>
+        Accès au Disco-Club “Les girelles dansantes” (<?php echo $tarifdisco; ?>€/jr)<input type="radio" name="disco" value="<?php echo $tarifdisco ?>"><br>
+        Accès aux activités Yoga, Frisbee et Ski Nautique (pack à <?php echo $tarifyfs; ?>€/jr)<input type="radio" name="yfs" value="<?php echo $tarifyfs ?>"><br>
         <input type="submit" name="valider">
     </form>
     <?php
@@ -63,6 +75,7 @@ else
 
 
 <?php
+
 
 
 if(isset($_POST['valider']))
@@ -145,7 +158,7 @@ if(isset($_POST['valider']))
         // CALCUL SOMME TOTAL DU SEJOUR
         $duree=$_POST['dureesejour'];
         $optiontotal= $option1 + $option2 + $option3;
-        $totalsejour=($optiontotal*$duree) + $duree*10;
+        $totalsejour=($optiontotal*$duree) + $duree*$tarifjour;
 
       
 
