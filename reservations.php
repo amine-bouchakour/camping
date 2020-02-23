@@ -177,7 +177,7 @@ if(isset($_POST['valider']))
         }
         else
         {
-            echo 'Il ne reste plus de place disponible à cette période'.'<br/>'.'<br/>';
+            echo 'Il ne reste plus de place disponible à cette période'.'<br/>'.'<br/>'; 
         }
 
         
