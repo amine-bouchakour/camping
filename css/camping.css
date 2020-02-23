@@ -1,0 +1,23 @@
+body{
+    margin: 100px auto;
+}
+
+.sectionadmin{
+    margin:0px auto 80px;
+    width: 80%;
+    height: 40%;
+    border: 4px black solid;
+    background-color: bisque;
+    overflow: auto;    
+}
+
+h1{
+    text-align: center;
+}
+
+table,td{
+    font-size: 1.5vw;
+    margin:0px auto 30px;
+   text-align: center;
+   border: 4px black solid;
+
