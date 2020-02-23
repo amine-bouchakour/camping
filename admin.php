@@ -3,8 +3,11 @@
 
 
 <?php
+session_start();
 
     if($_SESSION['login']="admin"){
+
+        echo 'Bienvenue admninistrateur'.'<br/>';
 
         $connexion=mysqli_connect("Localhost","root","","camping");
         ?>
@@ -202,15 +205,44 @@
         ;
         ++$j;
         }
-        ?></article></section><?php
+        ?></article></section>
         
+        <?php
+        
+        $connexion=mysqli_connect("Localhost","root","","camping");
+        $requete = "SELECT jour,borne,disco,yfs FROM tarif";
+        $query=mysqli_query($connexion,$requete);
+        $resultat=mysqli_fetch_all($query);
+    
+        // DEFINITION TARIF PAR REQUETE BDD
+        $tarifjour=$resultat[0][0];
+        $tarifborne=$resultat[0][1];
+        $tarifdisco=$resultat[0][2];
+        $tarifyfs=$resultat[0][3];
 
+        ?>
 
+        <!-- MODIFICATION VALEUR PRIX -->
 
-        echo 'Bienvenue admninistrateur'.'<br/>';
+        Modifier les tarifs 
 
+        <form action="" method="POST">
+            <input type="text" name="borne" value="<?php echo $tarifborne ?>"><br>
+            <input type="text" name="disco" value="<?php echo $tarifdisco ?>"><br>
+            <input type="text" name="yfs" value="<?php echo $tarifyfs ?>"><br>
+            <input type="text" name="jour" value="<?php echo $tarifjour ?>"><br>
+            <input type="submit" name="modifier">
+        </form>
 
+        <?php
+   
+   if(isset($_POST['modifier']) and isset($_POST['borne']) and isset($_POST['disco']) and isset($_POST['yfs']) and isset($_POST['jour'])){
 
+        $requete = "UPDATE tarif SET jour='".$_POST['jour']."',borne='".$_POST['borne']."', disco='".$_POST['disco']."', yfs='".$_POST['yfs']."'";
+        $query=mysqli_query($connexion,$requete);
+        // echo $requete;
+    }
+   
 
     }
     else{
@@ -219,5 +251,7 @@
 
 
 ?>
+
+
 
 </html>
