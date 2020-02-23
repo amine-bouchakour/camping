@@ -134,18 +134,20 @@ if(isset($_POST['valider']))
            if($placedispo==0){
            break;
            }
-        
+
+           $finsejour=date("Y-m-d + '".$_POST['dureesejour']."'") ;
+           echo $finsejour.'<br/>';
             
 
         }
 
 
+        // CALCUL SOMME TOTAL DU SEJOUR
         $duree=$_POST['dureesejour'];
         $optiontotal= $option1 + $option2 + $option3;
         $totalsejour=($optiontotal*$duree) + $duree*10;
 
-
-
+      
 
         if(isset($_POST['borne']))
         {
