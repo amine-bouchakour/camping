@@ -3,21 +3,26 @@ body{
 }
 
 .sectionadmin{
+    
     margin:0px auto 80px;
-    width: 80%;
+    width: 60%;
     height: 48%;
     border: 4px black solid;
     background-color: bisque;
     overflow: auto;    
 }
 
+
+
 h1{
+    font-weight: bold;
     text-align: center;
 }
 
-table,td{
+table{
     font-size: 1.2vw;
     margin:0px auto 30px;
-   text-align: center;
+   text-align: left;
    border: 4px black solid;
+}
 
