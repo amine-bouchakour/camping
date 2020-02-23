@@ -20,11 +20,17 @@
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
-      
+        
+        $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='pins'";
+        $query0=mysqli_query($connexion,$requete0);
+        $resultat0=mysqli_fetch_row($query0);
 
 
         ?> 
         <h1>Réservation pour les Pins</h1>
+        <h2>Nb de réservations total : <?php echo count($resultat) ?></h2>
+        <h2>Sommes total cumulé sur les Pins : <?php echo $resultat0[0]; ?> euros</h2>
+
         <?php
 
         ?> <section class="sectionadmin"><article><?php
@@ -81,11 +87,17 @@
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
+
+        $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='plage'";
+        $query0=mysqli_query($connexion,$requete0);
+        $resultat0=mysqli_fetch_row($query0);
       
 
 
         ?> 
         <h1>Réservation pour la Plage</h1>
+        <h2>Nb de réservations total : <?php echo count($resultat) ?></h2>
+        <h2>Sommes total cumulé sur le plage : <?php echo $resultat0[0]; ?> euros</h2>
         <?php
 
         ?><section class="sectionadmin"><article><?php
@@ -138,10 +150,15 @@
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
       
+        $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='maquis'";
+        $query0=mysqli_query($connexion,$requete0);
+        $resultat0=mysqli_fetch_row($query0);
 
 
         ?> 
         <h1>Réservation pour le Maquis</h1>
+        <h2>Nb de réservations total : <?php echo count($resultat) ?></h2>
+        <h2>Sommes total cumulé sur le maquis : <?php echo $resultat0[0]; ?> euros</h2>
         <?php
 
         ?> <section class="sectionadmin"><article><?php
