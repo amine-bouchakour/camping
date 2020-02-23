@@ -7,7 +7,7 @@ session_start();
 
     if($_SESSION['login']="admin"){
 
-        echo 'Bienvenue admninistrateur'.'<br/>';
+        echo '<h1>Bienvenue admninistrateur'.'</h1><br/>';
 
         $connexion=mysqli_connect("Localhost","root","","camping");
         ?>
@@ -19,10 +19,21 @@ session_start();
 
         <?php
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY date,login DESC";
+        if(!isset($_POST['habitat'])){
+            $habitat="tente";
+        }
+        else{
+            $habitat=$_POST['habitat'];
+        }
+
+        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' and habitat='".$habitat."' ORDER BY date,login DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
+
+        $requete1bis0="SELECT * FROM reservationplace WHERE emplacement='pins'";
+        $query1bis0=mysqli_query($connexion,$requete1bis0);
+        $resultat1bis0=mysqli_fetch_all($query1bis0);
         
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='pins'";
         $query0=mysqli_query($connexion,$requete0);
@@ -31,9 +42,16 @@ session_start();
 
         ?> 
         <h1>Réservation pour les Pins</h1>
-        <h2>Nb de réservations total : <?php echo count($resultat) ?></h2>
+        <h2>Nb de réservations total : <?php echo count($resultat1bis0) ?></h2>
         <h2>Sommes total cumulé sur les Pins : <?php echo $resultat0[0]; ?> euros</h2>
 
+        <form action="" method="post">
+            <select name="habitat">
+                <option value="tente">Tente</option>
+                <option value="cpgcar">Camping-car</option>
+            </select>
+            <input type="submit" value="valider">
+        </form>
         <?php
 
         ?> <section class="sectionadmin"><article><?php
@@ -85,11 +103,21 @@ session_start();
         }
         ?></article></section><?php
 
+        if(!isset($_POST['habitat1'])){
+            $habitat1="tente";
+        }
+        else{
+            $habitat1=$_POST['habitat1'];
+        }
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='plage' ORDER BY date,login DESC";
+        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='plage' and habitat='".$habitat1."' ORDER BY date,login DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
+        $requete1="SELECT * FROM reservationplace WHERE emplacement='plage'";
+        $query1=mysqli_query($connexion,$requete1);
+        $resultat1=mysqli_fetch_all($query1);
+        
 
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='plage'";
         $query0=mysqli_query($connexion,$requete0);
@@ -99,8 +127,16 @@ session_start();
 
         ?> 
         <h1>Réservation pour la Plage</h1>
-        <h2>Nb de réservations total : <?php echo count($resultat) ?></h2>
+        <h2>Nb de réservations total : <?php echo count($resultat1) ?></h2>
         <h2>Sommes total cumulé sur le plage : <?php echo $resultat0[0]; ?> euros</h2>
+
+        <form action="" method="post">
+            <select name="habitat1">
+                <option value="tente">Tente</option>
+                <option value="cpgcar">Camping-car</option>
+            </select>
+            <input type="submit" value="valider">
+        </form>
         <?php
 
         ?><section class="sectionadmin"><article><?php
@@ -146,12 +182,21 @@ session_start();
         }
         ?></article></section><?php
        
+        if(!isset($_POST['habitat2'])){
+            $habitat2="tente";
+        }
+        else{
+            $habitat2=$_POST['habitat2'];
+        }
 
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='maquis' ORDER BY date,login DESC";
+        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='maquis' and habitat='".$habitat2."' ORDER BY date,login DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
+        $requete1bis="SELECT * FROM reservationplace WHERE emplacement='maquis'";
+        $query1bis=mysqli_query($connexion,$requete1bis);
+        $resultat1bis=mysqli_fetch_all($query1bis);
       
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='maquis'";
         $query0=mysqli_query($connexion,$requete0);
@@ -160,8 +205,16 @@ session_start();
 
         ?> 
         <h1>Réservation pour le Maquis</h1>
-        <h2>Nb de réservations total : <?php echo count($resultat) ?></h2>
+        <h2>Nb de réservations total : <?php echo count($resultat1bis) ?></h2>
         <h2>Sommes total cumulé sur le maquis : <?php echo $resultat0[0]; ?> euros</h2>
+
+        <form action="" method="post">
+            <select name="habitat2">
+                <option value="tente">Tente</option>
+                <option value="cpgcar">Camping-car</option>
+            </select>
+            <input type="submit" value="valider">
+        </form>
         <?php
 
         ?> <section class="sectionadmin"><article><?php
@@ -224,13 +277,13 @@ session_start();
 
         <!-- MODIFICATION VALEUR PRIX -->
 
-        Modifier les tarifs 
+        <h1>Modifier les tarifs</h1> 
 
         <form action="" method="POST">
-            <input type="text" name="borne" value="<?php echo $tarifborne ?>"><br>
-            <input type="text" name="disco" value="<?php echo $tarifdisco ?>"><br>
-            <input type="text" name="yfs" value="<?php echo $tarifyfs ?>"><br>
-            <input type="text" name="jour" value="<?php echo $tarifjour ?>"><br>
+            <label for="">Tarif borne :</label><input type="text" name="borne" value="<?php echo $tarifborne ?>"><br>
+            <label for="">Tarif Disco :</label><input type="text" name="disco" value="<?php echo $tarifdisco ?>"><br>
+            <label for="">Tarif Formule YFS :</label><input type="text" name="yfs" value="<?php echo $tarifyfs ?>"><br>
+            <label for="">Tarif Journalier location :</label><input type="text" name="jour" value="<?php echo $tarifjour ?>"><br>
             <input type="submit" name="modifier">
         </form>
 
