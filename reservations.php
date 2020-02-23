@@ -120,7 +120,7 @@ if(isset($_POST['valider']))
                 
                 $placedispo=$placedispo - 2;
                 echo $resultat[$i].'<br/>';
-                //echo $placedispo.'<br/>';
+                echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
 
             }
@@ -128,7 +128,7 @@ if(isset($_POST['valider']))
             {
                 $placedispo=$placedispo - 1;
                 echo $resultat[$i][0].'<br/>';
-                echo $placedispo.'<br/>';
+                echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
             }
            
