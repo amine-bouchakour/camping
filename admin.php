@@ -27,7 +27,7 @@
         <h1>Réservation pour les Pins</h1>
         <?php
 
-        ?> <section class="sectionadmin"><article> <table><?php
+        ?> <section class="sectionadmin"><article><?php
         $j=0;
         while($j<count($resultat)){
 
@@ -44,7 +44,7 @@
         $prixtotal=number_format($resultat[$j][11],2);
 
 
-        echo "<th>$login</th>
+        echo "<table><th>$login</th>
         <tr>
         <td>Date de réservation = $date</td>
         </tr>
@@ -68,13 +68,13 @@
         </tr>
         <tr>
         <td><a href=''>ANNULER RESERVATION</a></td>
-        </tr>"
+        </tr></table>"
         ;
         ++$j;
         ?> <?php
 
         }
-        ?></table> </article></section><?php
+        ?></article></section><?php
 
 
         $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='plage' ORDER BY date,login DESC";
@@ -88,7 +88,7 @@
         <h1>Réservation pour la Plage</h1>
         <?php
 
-        ?><section class="sectionadmin"><article><table><?php
+        ?><section class="sectionadmin"><article><?php
         $j=0;
         while($j<count($resultat)){
 
@@ -104,7 +104,7 @@
         $yfs=ucfirst($resultat[$j][10]);
         $prixtotal=number_format($resultat[$j][11],2);
 
-        echo "<th>$login</th>
+        echo "<table><th>$login</th>
         <tr>
         <td>Date de réservation = $date</td>
         </tr>
@@ -125,11 +125,11 @@
         </tr>
         <tr>
         <td>Prix total TTC = $prixtotal Euros</td>
-        </tr>"
+        </tr></table>"
         ;
         ++$j;
         }
-        ?></table></article></section><?php
+        ?></article></section><?php
        
 
 
@@ -144,7 +144,7 @@
         <h1>Réservation pour le Maquis</h1>
         <?php
 
-        ?> <section class="sectionadmin"><article><table><?php
+        ?> <section class="sectionadmin"><article><?php
         $j=0;
         while($j<count($resultat)){
 
@@ -160,7 +160,7 @@
         $yfs=ucfirst($resultat[$j][10]);
         $prixtotal=number_format($resultat[$j][11],2);
 
-        echo "<th>$login</th>
+        echo "<table><th>$login</th>
         <tr>
         <td>Date de réservation = $date</td>
         </tr>
@@ -181,11 +181,11 @@
         </tr>
         <tr>
         <td>Prix total TTC = $prixtotal Euros</td>
-        </tr>"
+        </tr></table>"
         ;
         ++$j;
         }
-        ?></table></article></section><?php
+        ?></article></section><?php
         
 
 
