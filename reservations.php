@@ -127,7 +127,7 @@ if(isset($_POST['valider']))
             else
             {
                 $placedispo=$placedispo - 1;
-                echo 'tente'.'<br/>';
+                echo $resultat[$i][0].'<br/>';
                 // echo $placedispo.'<br/>';
                 ++$i;
             }
