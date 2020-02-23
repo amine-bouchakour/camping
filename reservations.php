@@ -103,7 +103,7 @@ if(isset($_POST['valider']))
 
 
         $connexion=mysqli_connect("Localhost","root","","camping");
-        $requete = "SELECT habitat FROM reservationplace WHERE emplacement='".$_POST['emplacement']."'";
+        $requete = "SELECT habitat,date FROM reservationplace WHERE emplacement='".$place."' and date='".$date."'";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         var_dump($resultat);
@@ -115,7 +115,7 @@ if(isset($_POST['valider']))
         while($i<$j)
         {
 
-            if($resultat[$i]='cpgcar')
+            if($resultat[$i]=="cpgcar")
             {
                 
                 $placedispo=$placedispo - 2;
