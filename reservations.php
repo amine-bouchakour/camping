@@ -148,8 +148,8 @@ if(isset($_POST['valider']))
            break;
            }
 
-           $finsejour=date("Y-m-d + '".$_POST['dureesejour']."'") ;
-           echo $finsejour.'<br/>';
+        //    $finsejour=date("Y-m-d + '".$_POST['dureesejour']."'") ;
+        //    echo $finsejour.'<br/>';
             
 
         }
