@@ -52,7 +52,16 @@ foreach($resultat as $ligne){
     $disco=ucfirst($ligne[6]);
     $yfs=ucfirst($ligne[7]);
     $id=$ligne[0];
-echo "<table>
+echo "<table><thead>
+<td>Date</td>
+<td>Lieu</td>
+<td>Type d'habitat</td>
+<td>Durée du séjour</td>
+<td>Option borne electrique</td>
+<td>Option Acces Discothèque</td>
+<td>Option Formule YFS</td>
+<td>Réservations</td>
+</thead>
 <tr>
 <td>$date</td>
 <td>$emplacement</td>
