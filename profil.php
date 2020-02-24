@@ -70,6 +70,7 @@ if(isset($_GET['id'])){
 
 ?>
 
+<a href="reservations.php"><h2>Faire une nouvelle réservation</h2></a>
 
 
 <?php
