@@ -4,10 +4,10 @@ body{
 
 .sectionadmin{
     
-    margin:0px auto 80px;
-    width: 60%;
-    height: 48%;
-    border: 4px black solid;
+    margin:0px auto 130px;
+    width: 50%;
+    height: 60%;
+    border: 10px black solid;
     border-radius: 2em 0em 0em 2em;
     background-color: bisque;
     overflow: auto;    
@@ -21,8 +21,8 @@ h1,h2{
 }
 
 table{
-    font-size: 1.2vw;
-    margin:0px auto 30px;
+    font-size: 1.3vw;
+    margin:0px auto 50px;
    text-align: left;
    border: 4px black solid;
 }
