@@ -23,15 +23,18 @@ session_start();
 
 
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY date DESC";
+        $requete="SELECT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY date DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
+        // echo $requete;
 
         $requete1bis0="SELECT * FROM reservationplace WHERE emplacement='pins'";
         $query1bis0=mysqli_query($connexion,$requete1bis0);
         $resultat1bis0=mysqli_fetch_all($query1bis0);
+        // var_dump($resultat1bis0);
         
+        // CALCUL SOMME TOTAL GAGNEE POUR LES PINS
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='pins'";
         $query0=mysqli_query($connexion,$requete0);
         $resultat0=mysqli_fetch_row($query0);
@@ -92,8 +95,7 @@ session_start();
         <a href='admin.php?id=$id'>ANNULER RESERVATION</a>
         <a href='admin.php?idbis=$id_utilisateur'>SUPPRIMER COMPTE</a>
         </td>
-        </tr></table>"
-        ;
+        </tr></table>";
         ++$j;
         ?> <?php
 
@@ -108,6 +110,8 @@ session_start();
         if(isset($_GET['idbis'])){
             $requete2="DELETE FROM utilisateurs  WHERE utilisateurs.id='".$_GET['idbis']."'";
             $query2=mysqli_query($connexion,$requete2);
+            $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['idbis']."'";
+            $query3=mysqli_query($connexion,$requete3);
         }
 
       
@@ -121,6 +125,7 @@ session_start();
         $resultat1=mysqli_fetch_all($query1);
         
 
+        // CALCUL SOMME TOTAL GAGNEE POUR LA PLAGE
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='plage'";
         $query0=mysqli_query($connexion,$requete0);
         $resultat0=mysqli_fetch_row($query0);
@@ -194,6 +199,8 @@ session_start();
         if(isset($_GET['id1bis'])){
             $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id1bis']."'";
             $query2=mysqli_query($connexion,$requete2);
+            $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id1bis']."'";
+            $query3=mysqli_query($connexion,$requete3);
         }
        
 
@@ -205,6 +212,7 @@ session_start();
         $query1bis=mysqli_query($connexion,$requete1bis);
         $resultat1bis=mysqli_fetch_all($query1bis);
       
+        // CALCUL SOMME TOTAL GAGNEE POUR LE MAQUIS
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='maquis'";
         $query0=mysqli_query($connexion,$requete0);
         $resultat0=mysqli_fetch_row($query0);
@@ -280,6 +288,9 @@ session_start();
             $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id2bis']."'";
             $query2=mysqli_query($connexion,$requete2);
             // echo $requete2;
+            $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id2bis']."'";
+            $query3=mysqli_query($connexion,$requete3);
+            // echo $requete3;
         }
         
         $connexion=mysqli_connect("Localhost","root","","camping");
