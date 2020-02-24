@@ -5,7 +5,7 @@
 <?php
 session_start();
 
-    if($_SESSION['login']="admin"){
+    if($_SESSION['login']=="admin"){
 
         echo '<h1>Bienvenue admninistrateur'.'</h1><br/>';
 
