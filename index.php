@@ -12,6 +12,7 @@
 session_start();
 if(isset($_SESSION['login'])){
     echo '<a href="reservations.php">Réservations</a><br>
+    <a href="profil.php">Profil</a><br>
     <a href="deconnexion">Déconnexion</a><br>';
     if($_SESSION['login']=='admin'){
         echo '<a href="admin.php">Page admin</a><br>';
