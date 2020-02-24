@@ -6,6 +6,8 @@
 session_start();
 
     if($_SESSION['login']=="admin"){
+        ?><meta http-equiv="refresh" content="30;"/><?php
+        echo '<a href="index.php">Page principale</a>';
 
         echo '<h1>Bienvenue admninistrateur'.'</h1><br/>';
 
