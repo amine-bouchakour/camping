@@ -12,7 +12,10 @@ if(isset($_SESSION['login'])){
 
 </head>
 
+<a href="index.php">Page principale</a>
 <?php
+
+
 echo '<h1>'.'Toutes vos réservations'.'</h1><br/>';
 
 
