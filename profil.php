@@ -12,13 +12,15 @@ if(isset($_SESSION['login'])){
 
 </head>
 
-<a href="index.php">Page principale</a>
+<a href="index.php?pg=1">Page principale</a>
 <?php
-
+if(isset($_GET['pg']) and $_GET['pg']==1){
+    header("location:index.php");
+}
 
 echo '<h1>'.'Toutes vos réservations'.'</h1><br/>';
 
-
+// TOUTES LES RESERVATIONS DE L'UTILISATEUR CONNECTEE
 $connexion=mysqli_connect("localhost","root","","camping");
 $requete="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$_SESSION['login']."' ORDER BY date DESC";
 $query=mysqli_query($connexion,$requete);
@@ -65,10 +67,10 @@ echo "<table>
 }
 
 
-if(isset($_GET['id'])){
+if(isset($_GET['id']) and !isset($_GET['pg'])){
     $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
     $query1=mysqli_query($connexion,$requete1);
-    $_GET['id']=0;
+    ?><meta http-equiv="refresh" content="5;"/><?php
 }
 
 ?>
