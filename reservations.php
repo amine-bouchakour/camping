@@ -4,6 +4,19 @@
 session_start();
 if (isset($_SESSION['login']))
 {
+
+    echo '<a href="index.php">Page principale</a><br/><br/>';
+    $connexion=mysqli_connect("Localhost","root","","camping");
+    $requete = "SELECT jour,borne,disco,yfs FROM tarif";
+    $query=mysqli_query($connexion,$requete);
+    $resultat=mysqli_fetch_all($query);
+
+    // DEFINITION TARIF PAR REQUETE BDD
+    $tarifjour=$resultat[0][0];
+    $tarifborne=$resultat[0][1];
+    $tarifdisco=$resultat[0][2];
+    $tarifyfs=$resultat[0][3];
+
     ?>
     <head>
         <title>Réservation</title>
@@ -43,9 +56,9 @@ if (isset($_SESSION['login']))
             <option value="14">14</option>
         </select>
         <br>
-        Accès à la borne électrique (2€/jr)<input type="radio" name="borne" value="2"><br>
-        Accès au Disco-Club “Les girelles dansantes” (17€/jr)<input type="radio" name="disco" value="17"><br>
-        Accès aux activités Yoga, Frisbee et Ski Nautique (pack à 30€/jr)<input type="radio" name="yfs" value="30"><br>
+        Accès à la borne électrique (<?php echo $tarifborne; ?>€/jr)<input type="radio" name="borne" value="<?php echo $tarifborne ?>"><br>
+        Accès au Disco-Club “Les girelles dansantes” (<?php echo $tarifdisco; ?>€/jr)<input type="radio" name="disco" value="<?php echo $tarifdisco ?>"><br>
+        Accès aux activités Yoga, Frisbee et Ski Nautique (pack à <?php echo $tarifyfs; ?>€/jr)<input type="radio" name="yfs" value="<?php echo $tarifyfs ?>"><br>
         <input type="submit" name="valider">
     </form>
     <?php
@@ -63,6 +76,7 @@ else
 
 
 <?php
+
 
 
 if(isset($_POST['valider']))
@@ -103,7 +117,7 @@ if(isset($_POST['valider']))
 
 
         $connexion=mysqli_connect("Localhost","root","","camping");
-        $requete = "SELECT habitat FROM reservationplace WHERE emplacement='".$_POST['emplacement']."'";
+        $requete = "SELECT habitat,date FROM reservationplace WHERE emplacement='".$place."' and date='".$date."'";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         var_dump($resultat);
@@ -115,34 +129,39 @@ if(isset($_POST['valider']))
         while($i<$j)
         {
 
-            if($resultat[$i]='cpgcar')
+            if($resultat[$i][0]=="cpgcar")
             {
                 
                 $placedispo=$placedispo - 2;
-                echo $resultat[$i].'<br/>';
-                // echo $placedispo.'<br/>';
+                //echo $resultat[$i][0].'<br/>';
+                //echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
 
             }
             else
             {
                 $placedispo=$placedispo - 1;
-                echo 'tente'.'<br/>';
-                // echo $placedispo.'<br/>';
+                //echo $resultat[$i][0].'<br/>';
+                //echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
             }
-           
+           if($placedispo==0){
+           break;
+           }
+
+        //    $finsejour=date("Y-m-d + '".$_POST['dureesejour']."'") ;
+        //    echo $finsejour.'<br/>';
             
 
         }
 
 
+        // CALCUL SOMME TOTAL DU SEJOUR
         $duree=$_POST['dureesejour'];
         $optiontotal= $option1 + $option2 + $option3;
-        $totalsejour=($optiontotal*$duree) + $duree*10;
+        $totalsejour=($optiontotal*$duree) + $duree*$tarifjour;
 
-
-
+      
 
         if(isset($_POST['borne']))
         {
@@ -166,23 +185,25 @@ if(isset($_POST['valider']))
             $_POST['yfs']='non';
         }
 
-        if(($placedispo>=2 and $_POST['habitat']='cpgcar') or ($placedispo>=1 and $_POST['habitat']='tente'))
+        if(($placedispo>=2 and $_POST['habitat']=='cpgcar') or ($placedispo>=1 and $_POST['habitat']=='tente'))
         {
 
             $connexion=mysqli_connect("Localhost","root","","camping");
             $requete="INSERT INTO reservationplace (date,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$date."','".$place."','".$habitat."','".$_POST['dureesejour']."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
             $query=mysqli_query($connexion,$requete);
     
-            echo 'reservation validé'.'<br/>';
+            echo 'reservation validé'.'<br/>'.'<br/>';
+            echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
+            echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
+
         }
         else
         {
-            echo 'Il ne reste plus de place disponible à cette période'.'<br/>';
+            echo 'Il ne reste plus de place disponible à cette période'.'<br/>'.'<br/>'; 
         }
 
         
-        // echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-        // echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
+        
     }
     else
     {
