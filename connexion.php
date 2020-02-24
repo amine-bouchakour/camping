@@ -1,25 +1,44 @@
 <html>
 
-<head>
-<title>Connexion</title>
+	<head>
+		<title>Connexion</title>
+		<link rel="stylesheet" type="text/css" href="css/camping.css">
 
-</head>
+	</head>
+	<body>
+		<main>
+			<div>
+	 			<?php include('header.php'); ?>
+	 		</div>
+	 		<div id="fullFormConnexion">
+	 			<div id="titreConnexion">CONNEXION</div>
+	 			<div id="formConnexion">
+	 				<form action="" method="post"><br />
+
+		 				Login : <br /><input type="text" name="login"><br />
+		 				Password : <br /><input type="password" name="password"><br />
+	 				
+                    </div>
+                    <div id="buttonConnexion">
+                        <input type="submit" name="valider">
+                    </div>
+                </form>
+	 			
+	 		</div>
+			
 
 
-<form action="" method="post"><br>
-Login : <input type="text" name="login"><br>
-Password : <input type="password" name="password"><br>
-<input type="submit" name="valider">
-</form>
+			<?php
+
+			include('fonctions.php');
+			connexion();
+			?>
+		</main>
+		
+	</body>
 
 
-<?php
-
-include('fonctions.php');
-connexion();
-
-
-?>
+	
 
  
 
