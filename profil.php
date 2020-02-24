@@ -47,7 +47,6 @@ foreach($resultat as $ligne){
     $disco=ucfirst($ligne[6]);
     $yfs=ucfirst($ligne[7]);
     $id=$ligne[0];
-    echo $ligne[0].'<br/>';
 echo "<table>
 <tr>
 <td>$date</td>
@@ -63,9 +62,13 @@ echo "<table>
 }
 
 
-?>
+if(isset($_GET['id'])){
+    $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
+    $query1=mysqli_query($connexion,$requete1);
+    $_GET['id']=0;
+}
 
-if()
+?>
 
 
 
