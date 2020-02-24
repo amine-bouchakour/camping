@@ -5,6 +5,7 @@ session_start();
 if (isset($_SESSION['login']))
 {
 
+    echo '<a href="index.php">Page principale</a><br/><br/>';
     $connexion=mysqli_connect("Localhost","root","","camping");
     $requete = "SELECT jour,borne,disco,yfs FROM tarif";
     $query=mysqli_query($connexion,$requete);
@@ -132,16 +133,16 @@ if(isset($_POST['valider']))
             {
                 
                 $placedispo=$placedispo - 2;
-                echo $resultat[$i][0].'<br/>';
-                echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
+                //echo $resultat[$i][0].'<br/>';
+                //echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
 
             }
             else
             {
                 $placedispo=$placedispo - 1;
-                echo $resultat[$i][0].'<br/>';
-                echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
+                //echo $resultat[$i][0].'<br/>';
+                //echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                 ++$i;
             }
            if($placedispo==0){
@@ -192,6 +193,9 @@ if(isset($_POST['valider']))
             $query=mysqli_query($connexion,$requete);
     
             echo 'reservation validé'.'<br/>'.'<br/>';
+            echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
+            echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
+
         }
         else
         {
@@ -199,8 +203,7 @@ if(isset($_POST['valider']))
         }
 
         
-        echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-        echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
+        
     }
     else
     {
