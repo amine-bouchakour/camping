@@ -4,7 +4,7 @@
 <title>Page principale</title>
 
 </head>
-
+ <h1>Le Camping des Happy Sardines</h1>
 
 
 
