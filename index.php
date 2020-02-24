@@ -1,30 +1,21 @@
 <html>
 
-<head>
-<title>Page principale</title>
+	<head>
+		<title>Page principale</title>
+		<link rel="stylesheet" type="text/css" href="css/camping.css">
+	</head>
+	<body id="bodyindex">
+		<main>
+	 		
+	 		<div>
+	 			<?php include('header.php'); ?>
+	 		</div>
 
-</head>
- <h1>Le Camping des Happy Sardines</h1>
 
 
-
-<?php
-session_start();
-if(isset($_SESSION['login'])){
-    echo '<a href="reservations.php">Réservations</a><br>
-    <a href="profil.php">Profil</a><br>
-    <a href="deconnexion">Déconnexion</a><br>';
-    if($_SESSION['login']=='admin'){
-        echo '<a href="admin.php">Page admin</a><br>';
-    }
-    echo $_SESSION['login'];
-}
-else{
-echo '<a href="connexion.php">Connexion</a><br>
-    <a href="inscription.php">Inscription</a><br>';
-}
-?>
-
+			
+		</main>
+	</body>
 
 
 </html>
