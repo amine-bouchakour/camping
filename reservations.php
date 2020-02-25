@@ -120,7 +120,7 @@ if(isset($_POST['valider']))
         $requete = "SELECT habitat,date FROM reservationplace WHERE emplacement='".$place."' and date='".$date."'";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
-        var_dump($resultat);
+        // var_dump($resultat);
 
         $j=count($resultat);
         $placetotal=4;
@@ -194,12 +194,13 @@ if(isset($_POST['valider']))
     
             echo 'reservation validé'.'<br/>'.'<br/>';
             echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-            echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.';
+            echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.'.'<br/>';
+            echo '<a href="profil.php">Voir vos réservations</a><br/>';
 
         }
         else
         {
-            echo 'Il ne reste plus de place disponible à cette période'.'<br/>'.'<br/>'; 
+            echo 'Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_POST['emplacement']).'<br/>'.'<br/>'; 
         }
 
         
