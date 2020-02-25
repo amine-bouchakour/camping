@@ -18,7 +18,7 @@
 	if(isset($_SESSION['login']))
 	{ ?>
 		<div class="statutUser">
-			<a href="reservations.php">Réservations</a><br>
+			<!-- <a href="reservations.php">Réservations</a><br> -->
 			<a href="profil.php">Profil</a><br>
 			<a href="deconnexion">Déconnexion</a><br>
 		</div>
