@@ -15,7 +15,7 @@ session_start();
         ?>
         <head>
             <title>Page Admin</title>
-            <link rel="stylesheet" href="css/camping.css">
+            <link rel="stylesheet" href="camping.css">
         </head>
 
 
