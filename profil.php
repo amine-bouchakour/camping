@@ -22,7 +22,7 @@ echo '<h1>'.'Toutes vos réservations'.'</h1><br/>';
 
 // TOUTES LES RESERVATIONS DE L'UTILISATEUR CONNECTEE
 $connexion=mysqli_connect("localhost","root","","camping");
-$requete="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$_SESSION['login']."' ORDER BY date DESC";
+$requete="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$_SESSION['login']."' ORDER BY date ASC";
 $query=mysqli_query($connexion,$requete);
 $resultat=mysqli_fetch_all($query);
 //var_dump($resultat);
@@ -35,6 +35,10 @@ $resultat0=mysqli_fetch_row($query0);
 // echo $requete0;
 
 $prixtotal=$resultat0[0];
+if(!empty($resultat)){
+    $Id=$resultat[0][9];
+    // echo $Id;
+}
 $nb_reservation=count($resultat);
 
 echo '<p>Réservation fait par = '.ucfirst($_SESSION['login']).'<br/>
@@ -79,15 +83,30 @@ echo "<table><thead>
 if(isset($_GET['id']) and !isset($_GET['pg'])){
     $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
     $query1=mysqli_query($connexion,$requete1);
-    ?><meta http-equiv="refresh" content="5;"/><?php
+    ?><meta http-equiv="refresh" content="3;"/><?php
 }
 
 ?>
 
 <a href="reservations.php"><h2>Faire une nouvelle réservation</h2></a>
+<a href="profil.php?supp=true"><h2>Supprimer compte</h2></a>
+
 
 
 <?php
+
+if(isset($_GET['supp']) and $_GET['supp']==true){
+    $connexion=mysqli_connect('localhost','root','','camping');
+    $requete="DELETE FROM utilisateurs WHERE login='".$_SESSION['login']."'";
+    $query=mysqli_query($connexion,$requete);
+    echo $requete;
+
+    $requete1="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$Id."'";
+    $query1=mysqli_query($connexion,$requete1);
+    echo $requete1;
+    
+    header('location:deconnexion.php');
+}
 
 }
 ?>
