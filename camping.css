@@ -27,6 +27,16 @@ table{
    border: 4px black solid;
 }
 
+.tableindex{
+    font-size: 2.5vw;
+    margin:5% auto;
+    padding:15px;
+   text-align: center;
+   border: 4px black solid;
+   border-radius: 1em;
+   background-color: rgba(113, 88, 255, 0.527);
+}
+
 form{
 
     text-align: center;
@@ -46,7 +56,13 @@ form{
 #bodyindex{
     background-image: url("img/bodybackground.jpg");
     background-size: cover;
+    color:white;
+}
 
+a
+{
+color: rgb(255, 233, 108);
+text-decoration: none;
 }
 
 #titreIndex{
