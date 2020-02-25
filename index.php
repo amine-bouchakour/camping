@@ -2,7 +2,7 @@
 
 	<head>
 		<title>Page principale</title>
-		<link rel="stylesheet" type="text/css" href="css/camping.css">
+		<link rel="stylesheet" type="text/css" href="camping.css">
 	</head>
 	<body id="bodyindex">
 		<main>
