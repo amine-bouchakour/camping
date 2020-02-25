@@ -5,6 +5,7 @@ session_start();
 if (isset($_SESSION['login']))
 {
 
+
     echo '<a href="index.php">Page principale</a><br/><br/>';
     $connexion=mysqli_connect("Localhost","root","","camping");
     $requete = "SELECT jour,borne,disco,yfs FROM tarif";
@@ -27,7 +28,7 @@ if (isset($_SESSION['login']))
     
     <form action="" method="post">
         <input type="date" name="date"><br>
-        <select type="text" name="emplacement">
+        <!-- <select type="text" name="emplacement">
             <option value="" selected="selected">-- Emplacement --</option>
             <option value="plage">La Plage</option>
             <option value="pins">Les Pins</option>
@@ -37,7 +38,7 @@ if (isset($_SESSION['login']))
             <option value="" selected="selected">-- Type d'habitat --</option>
             <option value="tente">En Tente</option>
             <option value="cpgcar">En Camping-car</option>
-        </select><br>
+        </select><br> -->
         <select type="text" name="dureesejour">
             <option value="" selected="selected">-- Nbr de jours --</option>
             <option value="1">1</option>
@@ -108,12 +109,12 @@ if(isset($_POST['valider']))
 
        
 
-    if(!empty($_POST['dureesejour']) and !empty($_POST['date']) and !empty($_POST['emplacement']) and !empty($_POST['habitat']))
+    if(!empty($_POST['dureesejour']) and !empty($_POST['date']) and !empty($_GET['emplacement']) and !empty($_GET['habitat']))
     {
         $date=$_POST['date'];
 
-        $habitat=$_POST['habitat'];
-        $place=$_POST['emplacement'];
+        $habitat=$_GET['habitat'];
+        $place=$_GET['emplacement'];
 
 
         $connexion=mysqli_connect("Localhost","root","","camping");
@@ -185,22 +186,25 @@ if(isset($_POST['valider']))
             $_POST['yfs']='non';
         }
 
-        if(($placedispo>=2 and $_POST['habitat']=='cpgcar') or ($placedispo>=1 and $_POST['habitat']=='tente'))
+        if(($placedispo>=2 and $_GET['habitat']=='cpgcar') or ($placedispo>=1 and $_GET['habitat']=='tente'))
         {
 
             $connexion=mysqli_connect("Localhost","root","","camping");
             $requete="INSERT INTO reservationplace (date,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$date."','".$place."','".$habitat."','".$_POST['dureesejour']."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
             $query=mysqli_query($connexion,$requete);
     
-            echo 'reservation validé'.'<br/>'.'<br/>';
+            echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
+            echo 'Date d\'entrée en camping : '.$date.'<br/>';
+            echo 'Lieu réservé : '.ucfirst($_GET['emplacement']).'<br/>';
+            echo 'Type de logement : '.ucfirst($_GET['habitat']).'<br/>';
             echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-            echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.'.'<br/>';
+            echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.'.'<br/>'.'<br/>';
             echo '<a href="profil.php">Voir vos réservations</a><br/>';
 
         }
         else
         {
-            echo 'Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_POST['emplacement']).'<br/>'.'<br/>'; 
+            echo 'Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_GET['emplacement']).'<br/>'.'<br/>'; 
         }
 
         
