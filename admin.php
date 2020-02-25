@@ -102,11 +102,14 @@ session_start();
         }
         ?></article></section><?php
 
+        // SUPPRESSION RESERVATION
         if(isset($_GET['id'])){
             $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
             $query1=mysqli_query($connexion,$requete1);
             $_GET['id']=0;
         }
+
+        // SUPPRESSION COMPTE ET RESERVATION
         if(isset($_GET['idbis'])){
             $requete2="DELETE FROM utilisateurs  WHERE utilisateurs.id='".$_GET['idbis']."'";
             $query2=mysqli_query($connexion,$requete2);
@@ -191,11 +194,13 @@ session_start();
         }
         ?></article></section><?php
 
+        // SUPPRESSION RESERVATION
         if(isset($_GET['id1'])){
             $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id1']."'";
             $query1=mysqli_query($connexion,$requete1);
             $_GET['id1']=0;
         }
+        // SUPPRESSION COMPTE ET RESERVATION
         if(isset($_GET['id1bis'])){
             $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id1bis']."'";
             $query2=mysqli_query($connexion,$requete2);
@@ -279,11 +284,15 @@ session_start();
         ?></article></section>
         
         <?php
+
+        // SUPPRESSION RESERVATION
         if(isset($_GET['id2'])){
             $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id2']."'";
             $query1=mysqli_query($connexion,$requete1);
             $_GET['id2']=0;
         }
+
+        // SUPPRESSION COMPTE ET RESERVATION
         if(isset($_GET['id2bis'])){
             $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id2bis']."'";
             $query2=mysqli_query($connexion,$requete2);
