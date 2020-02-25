@@ -2,7 +2,7 @@
 
 	<head>
 		<title>Connexion</title>
-		<link rel="stylesheet" type="text/css" href="css/camping.css">
+		<link rel="stylesheet" type="text/css" href="camping.css">
 
 	</head>
 	<body>
