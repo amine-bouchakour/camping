@@ -88,8 +88,8 @@ if(isset($_GET['id']) and !isset($_GET['pg'])){
 
 ?>
 
-<a href="reservations.php"><h3>Faire une nouvelle réservation</h3></a>
-<a href="profil.php?supp=true"><h3>Supprimer compte</h3></a>
+<a href="index.php"><h3>Faire une nouvelle réservation</h3></a>
+<a href="profil.php?supp=true"><h3>Supprimer mon compte</h3></a>
 
 
 
