@@ -23,11 +23,11 @@ session_start();
 
 
 
-        $requete="SELECT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY date DESC";
+        $requete="SELECT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY datedebut DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
-        // var_dump($resultat);
-        // echo $requete;
+        var_dump($resultat);
+        echo $requete;
 
         $requete1bis0="SELECT * FROM reservationplace WHERE emplacement='pins'";
         $query1bis0=mysqli_query($connexion,$requete1bis0);
@@ -54,23 +54,25 @@ session_start();
 
         $id=$resultat[$j][3];
         $id_utilisateur=$resultat[$j][12];
-
-              
         $login=ucfirst($resultat[$j][1]);
         $nb_reservation=count($resultat);
-        $date=$resultat[$j][4];
-        $emplacement=$resultat[$j][5];
-        $habitat=ucfirst($resultat[$j][6]);
-        $duree=$resultat[$j][7];
-        $borne=ucfirst($resultat[$j][8]);
-        $disco=ucfirst($resultat[$j][9]);
-        $yfs=ucfirst($resultat[$j][10]);
-        $prixtotal=number_format($resultat[$j][11],2);
+        $datedebut=$resultat[$j][4];
+        $datefin=$resultat[$j][5];
+        $emplacement=$resultat[$j][6];
+        $habitat=ucfirst($resultat[$j][7]);
+        $duree=$resultat[$j][8];
+        $borne=ucfirst($resultat[$j][9]);
+        $disco=ucfirst($resultat[$j][10]);
+        $yfs=ucfirst($resultat[$j][11]);
+        $prixtotal=number_format($resultat[$j][12],2);
 
 
         echo "<table><th>$login</th>
         <tr>
-        <td>Date de réservation = $date</td>
+        <td>Date d'entrée en camping = $datedebut</td>
+        </tr>
+        <tr>
+        <td>Date de sortie du camping = $datefin</td>
         </tr>
         <tr>
         <td>Type d'hébergement = $habitat</td>
@@ -119,7 +121,7 @@ session_start();
 
       
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='plage' ORDER BY date DESC";
+        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='plage' ORDER BY datedebut DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
@@ -147,52 +149,57 @@ session_start();
         $j=0;
         while($j<count($resultat)){
 
-        $id=$resultat[$j][3];
-        $id_utilisateur=$resultat[$j][12];
-        
-        $login=ucfirst($resultat[$j][1]);
-        $nb_reservation=count($resultat);
-        $date=$resultat[$j][4];
-        $emplacement=$resultat[$j][5];
-        $habitat=ucfirst($resultat[$j][6]);
-        $duree=$resultat[$j][7];
-        $borne=ucfirst($resultat[$j][8]);
-        $disco=ucfirst($resultat[$j][9]);
-        $yfs=ucfirst($resultat[$j][10]);
-        $prixtotal=number_format($resultat[$j][11],2);
-
-        echo "<table><th>$login</th>
-        <tr>
-        <td>Date de réservation = $date</td>
-        </tr>
-        <tr>
-        <td>Type d'hébergement = $habitat</td>
-        </tr>
-        <tr>
-        <td>Durée du séjour = $duree jours</td>
-        </tr>
-        <tr>
-        <td>Accès à la borne électrique = $borne</td>
-        </tr>
-        <tr>
-        <td>accès au Disco-Club “Les girelles dansantes” = $disco</td>
-        </tr>
-        <tr>
-        <td>Accès aux activités Yoga, Frisbee et Ski Nautique = $yfs</td>
-        </tr>
-        <tr>
-        <td>Prix total TTC = $prixtotal Euros</td>
-        </tr>
-        <tr>
-        <td>
-        <a href='admin.php?id1=$id'>ANNULER RESERVATION</a>
-        <a href='admin.php?id1bis=$id_utilisateur'>SUPPRIMER COMPTE</a>
-        </td>
-        </tr></table>"
-        ;
-        ++$j;
-        }
-        ?></article></section><?php
+            $id=$resultat[$j][3];
+            $id_utilisateur=$resultat[$j][12];
+            $login=ucfirst($resultat[$j][1]);
+            $nb_reservation=count($resultat);
+            $datedebut=$resultat[$j][4];
+            $datefin=$resultat[$j][5];
+            $emplacement=$resultat[$j][6];
+            $habitat=ucfirst($resultat[$j][7]);
+            $duree=$resultat[$j][8];
+            $borne=ucfirst($resultat[$j][9]);
+            $disco=ucfirst($resultat[$j][10]);
+            $yfs=ucfirst($resultat[$j][11]);
+            $prixtotal=number_format($resultat[$j][12],2);
+    
+    
+            echo "<table><th>$login</th>
+            <tr>
+            <td>Date d'entrée en camping = $datedebut</td>
+            </tr>
+            <tr>
+            <td>Date de sortie du camping = $datefin</td>
+            </tr>
+            <tr>
+            <td>Type d'hébergement = $habitat</td>
+            </tr>
+            <tr>
+            <td>Durée du séjour = $duree jours</td>
+            </tr>
+            <tr>
+            <td>Accès à la borne électrique = $borne</td>
+            </tr>
+            <tr>
+            <td>accès au Disco-Club “Les girelles dansantes” = $disco</td>
+            </tr>
+            <tr>
+            <td>Accès aux activités Yoga, Frisbee et Ski Nautique = $yfs</td>
+            </tr>
+            <tr>
+            <td>Prix total TTC = $prixtotal Euros</td>
+            </tr>
+            <tr>
+            <td>
+            <a href='admin.php?id=$id'>ANNULER RESERVATION</a>
+            <a href='admin.php?idbis=$id_utilisateur'>SUPPRIMER COMPTE</a>
+            </td>
+            </tr></table>";
+            ++$j;
+            ?> <?php
+    
+            }
+            ?></article></section><?php
 
         // SUPPRESSION RESERVATION
         if(isset($_GET['id1'])){
@@ -209,7 +216,7 @@ session_start();
         }
        
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='maquis' ORDER BY date DESC";
+        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='maquis' ORDER BY datedebut DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
@@ -235,53 +242,57 @@ session_start();
         $j=0;
         while($j<count($resultat)){
 
-        $id=$resultat[$j][3];
-        $id_utilisateur=$resultat[$j][12];
-
-              
-        $login=ucfirst($resultat[$j][1]);
-        $nb_reservation=count($resultat);
-        $date=$resultat[$j][4];
-        $emplacement=$resultat[$j][5];
-        $habitat=ucfirst($resultat[$j][6]);
-        $duree=$resultat[$j][7];
-        $borne=ucfirst($resultat[$j][8]);
-        $disco=ucfirst($resultat[$j][9]);
-        $yfs=ucfirst($resultat[$j][10]);
-        $prixtotal=number_format($resultat[$j][11],2);
-
-        echo "<table><th>$login</th>
-        <tr>
-        <td>Date de réservation = $date</td>
-        </tr>
-        <tr>
-        <td>Type d'hébergement = $habitat</td>
-        </tr>
-        <tr>
-        <td>Durée du séjour = $duree jours</td>
-        </tr>
-        <tr>
-        <td>Accès à la borne électrique = $borne</td>
-        </tr>
-        <tr>
-        <td>accès au Disco-Club “Les girelles dansantes” = $disco</td>
-        </tr>
-        <tr>
-        <td>Accès aux activités Yoga, Frisbee et Ski Nautique = $yfs</td>
-        </tr>
-        <tr>
-        <td>Prix total TTC = $prixtotal Euros</td>
-        </tr>
-        <tr>
-        <td>
-        <a href='admin.php?id2=$id'>ANNULER RESERVATION</a>
-        <a href='admin.php?id2bis=$id_utilisateur'>SUPPRIMER COMPTE</a>
-        </td>
-        </tr></table>"
-        ;
-        ++$j;
-        }
-        ?></article></section>
+            $id=$resultat[$j][3];
+            $id_utilisateur=$resultat[$j][12];
+            $login=ucfirst($resultat[$j][1]);
+            $nb_reservation=count($resultat);
+            $datedebut=$resultat[$j][4];
+            $datefin=$resultat[$j][5];
+            $emplacement=$resultat[$j][6];
+            $habitat=ucfirst($resultat[$j][7]);
+            $duree=$resultat[$j][8];
+            $borne=ucfirst($resultat[$j][9]);
+            $disco=ucfirst($resultat[$j][10]);
+            $yfs=ucfirst($resultat[$j][11]);
+            $prixtotal=number_format($resultat[$j][12],2);
+    
+    
+            echo "<table><th>$login</th>
+            <tr>
+            <td>Date d'entrée en camping = $datedebut</td>
+            </tr>
+            <tr>
+            <td>Date de sortie du camping = $datefin</td>
+            </tr>
+            <tr>
+            <td>Type d'hébergement = $habitat</td>
+            </tr>
+            <tr>
+            <td>Durée du séjour = $duree jours</td>
+            </tr>
+            <tr>
+            <td>Accès à la borne électrique = $borne</td>
+            </tr>
+            <tr>
+            <td>accès au Disco-Club “Les girelles dansantes” = $disco</td>
+            </tr>
+            <tr>
+            <td>Accès aux activités Yoga, Frisbee et Ski Nautique = $yfs</td>
+            </tr>
+            <tr>
+            <td>Prix total TTC = $prixtotal Euros</td>
+            </tr>
+            <tr>
+            <td>
+            <a href='admin.php?id=$id'>ANNULER RESERVATION</a>
+            <a href='admin.php?idbis=$id_utilisateur'>SUPPRIMER COMPTE</a>
+            </td>
+            </tr></table>";
+            ++$j;
+            ?> <?php
+    
+            }
+            ?></article></section>
         
         <?php
 
