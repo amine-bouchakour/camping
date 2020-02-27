@@ -9,7 +9,7 @@ if(isset($_SESSION['login'])){
 
 <head>
 <title>Page profil</title>
-
+<link rel="stylesheet" href="camping.css">
 </head>
 
 <a href="index.php?pg=1">Page principale</a>
@@ -108,5 +108,8 @@ if(isset($_GET['supp']) and $_GET['supp']==true){
     header('location:deconnexion.php');
 }
 
+}
+else{
+    header('location:connexion.php');
 }
 ?>
