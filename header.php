@@ -21,6 +21,8 @@
 			<!-- <a href="reservations.php">Réservations</a><br> -->
 			<a href="profil.php">Profil</a><br>
 			<a href="deconnexion">Déconnexion</a><br>
+			<a href="planning.php">Planning</a><br>
+
 		</div>
 
 		<?php
