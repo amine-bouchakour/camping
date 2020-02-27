@@ -1,12 +1,11 @@
 <html>
 
 <?php
-session_start();
+include('header.php');
 if (isset($_SESSION['login']))
 {
     // date_default_timezone_set('Europe/Paris');
 
-    echo '<a href="index.php">Page principale</a><br/><br/>';
     $connexion=mysqli_connect("Localhost","root","","camping");
     $requetetarif = "SELECT jour,borne,disco,yfs FROM tarif";
     $querytarif=mysqli_query($connexion,$requetetarif);
