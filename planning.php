@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('header.php');
 
 ?>
 <html>
@@ -10,8 +10,6 @@ session_start();
 <?php
 
 if(isset($_SESSION['login'])){
-    echo '<a href="index.php">Page principale</a><br/><br/>';
-
 
 $connexion=mysqli_connect("Localhost","root","","camping");
 $requete="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id ORDER BY datedebut DESC";
