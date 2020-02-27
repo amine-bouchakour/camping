@@ -25,6 +25,13 @@ table{
     margin:0px auto 50px;
    text-align: left;
    border: 4px black solid;
+   text-align: center;
+   padding:10px;
+}
+
+tr>.tableplanning{
+   border: 4px black solid;
+
 }
 
 .tableindex{
@@ -61,7 +68,7 @@ form{
 
 a
 {
-color: rgb(255, 233, 108);
+color: rgb(0, 0, 0);
 text-decoration: none;
 }
 
