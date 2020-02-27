@@ -4,7 +4,7 @@
 session_start();
 if (isset($_SESSION['login']))
 {
-
+    // date_default_timezone_set('Europe/Paris');
 
     echo '<a href="index.php">Page principale</a><br/><br/>';
     $connexion=mysqli_connect("Localhost","root","","camping");
@@ -84,8 +84,6 @@ else
 <?php
 
 
-
-
 if(isset($_POST['valider']))
 {
     if(isset($_POST['borne']))
@@ -115,18 +113,24 @@ if(isset($_POST['valider']))
 
        
 
-    if(!empty($_POST['dureesejour']) and !empty($_POST['datedebut']) and !empty($_GET['emplacement']) and !empty($_GET['habitat']))
+    if(!empty($_POST['dureesejour']) and !empty($_POST['datedebut']) and !empty($_POST['datefin']) and !empty($_GET['emplacement']) and !empty($_GET['habitat']))
     {
-        $datedebut=$_POST['datedebut'];
-        $datefin=$_POST['datefin'];
+
+        // CONVERSION DATE EN SUITE DE NOMBRES
+        $dated=$_POST['datedebut'];
+        $datef=$_POST['datefin'];
+        $datedebut=strftime("%G%m%d", strtotime($dated));
+        $datefin=strftime("%G%m%d", strtotime($datef));
 
         $habitat=$_GET['habitat'];
         $place=$_GET['emplacement'];
 
 
         $connexion=mysqli_connect("Localhost","root","","camping");
-        $requetehabitat="SELECT habitat FROM reservationplace WHERE datedebut BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."' OR datefin BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."'";
+        // $requetehabitat="SELECT habitat FROM reservationplace WHERE datedebut BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."' OR datefin BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."'";
+        $requetehabitat="SELECT habitat,datedebut,datefin FROM reservationplace WHERE $datedebut BETWEEN datedebut AND datefin AND $datefin BETWEEN datedebut AND datefin AND emplacement='".$place."'";
         $queryhabitat=mysqli_query($connexion,$requetehabitat);
+        
         $resultathabitat=mysqli_fetch_all($queryhabitat);
         echo $requetehabitat;
        
@@ -134,37 +138,37 @@ if(isset($_POST['valider']))
         var_dump($resultathabitat);
 
         $j=count($resultathabitat);
-        $placetotal=4;
         $placedispo=4;
         $i=0;
-        while($i<$j)
-        {
-
-            if($resultathabitat[$i][0]=="cpgcar")
+            while($i<$j)
             {
-                
-                $placedispo=$placedispo - 2;
-                //echo $resultat[$i][0].'<br/>';
-                //echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
-                ++$i;
 
-            }
-            else
-            {
-                $placedispo=$placedispo - 1;
-                //echo $resultat[$i][0].'<br/>';
-                //echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
-                ++$i;
-            }
-           if($placedispo==0){
-           break;
-           }
+                if($resultathabitat[$i][0]=="cpgcar")
+                {
+                    
+                    $placedispo=$placedispo - 2;
+                    //echo $resultat[$i][0].'<br/>';
+                    echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
+                    ++$i;
 
-        //    $finsejour=date("Y-m-d + '".$_POST['dureesejour']."'") ;
-        //    echo $finsejour.'<br/>';
-        
-    }
-    // echo $placedispo.'<br/>';
+                }
+                else
+                {
+                    $placedispo=$placedispo - 1;
+                    //echo $resultat[$i][0].'<br/>';
+                    echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
+                    ++$i;
+                }
+
+            if($placedispo==0){
+            break;
+            }
+
+            //    $finsejour=date("Y-m-d + '".$_POST['dureesejour']."'") ;
+            //    echo $finsejour.'<br/>';
+            
+            }
+        // echo $placedispo.'<br/>';
 
 
         // CALCUL SOMME TOTAL DU SEJOUR
@@ -172,7 +176,6 @@ if(isset($_POST['valider']))
         $optiontotal= $option1 + $option2 + $option3;
         $totalsejour=($optiontotal*$duree) + $duree*$tarifjour;
 
-      
 
         if(isset($_POST['borne']))
         {
@@ -196,26 +199,26 @@ if(isset($_POST['valider']))
             $_POST['yfs']='non';
         }
 
-        if(($placedispo>=2 and $_GET['habitat']=='cpgcar') or ($placedispo>=1 and $_GET['habitat']=='tente'))
-        {
+            if(($placedispo>=2 and $_GET['habitat']=='cpgcar') or ($placedispo>=1 and $_GET['habitat']=='tente'))
+            {
 
-            $connexion=mysqli_connect("Localhost","root","","camping");
-            $requetereservation="INSERT INTO reservationplace (datedebut,datefin,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$datedebut."','".$datefin."','".$place."','".$habitat."','".$_POST['dureesejour']."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
-            $queryreservation=mysqli_query($connexion,$requetereservation);
-    
-            echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
-            echo 'Date d\'entrée en camping : '.$datedebut.'<br/>';
-            echo 'Lieu réservé : '.ucfirst($_GET['emplacement']).'<br/>';
-            echo 'Type de logement : '.ucfirst($_GET['habitat']).'<br/>';
-            echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-            echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.'.'<br/>'.'<br/>';
-            echo '<a href="profil.php">Voir vos réservations</a><br/>';
+                $connexion=mysqli_connect("Localhost","root","","camping");
+                $requetereservation="INSERT INTO reservationplace (datedebut,datefin,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$datedebut."','".$datefin."','".$place."','".$habitat."','".$_POST['dureesejour']."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
+                $queryreservation=mysqli_query($connexion,$requetereservation);
+        
+                echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
+                echo 'Date d\'entrée en camping : '.$datedebut.'<br/>';
+                echo 'Lieu réservé : '.ucfirst($_GET['emplacement']).'<br/>';
+                echo 'Type de logement : '.ucfirst($_GET['habitat']).'<br/>';
+                echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
+                echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.'.'<br/>'.'<br/>';
+                echo '<a href="profil.php">Voir vos réservations</a><br/>';
 
-        }
-        else
-        {
-            echo 'Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_GET['emplacement']).'<br/>'.'<br/>'; 
-        }
+            }
+            else
+            {
+                echo 'Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_GET['emplacement']).'<br/>'.'<br/>'; 
+            }
 
         
         
