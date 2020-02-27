@@ -22,7 +22,7 @@ echo '<h1>'.'Toutes vos réservations'.'</h1><br/>';
 
 // TOUTES LES RESERVATIONS DE L'UTILISATEUR CONNECTEE
 $connexion=mysqli_connect("localhost","root","","camping");
-$requete="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$_SESSION['login']."' ORDER BY date ASC";
+$requete="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$_SESSION['login']."' ORDER BY datedebut ASC";
 $query=mysqli_query($connexion,$requete);
 $resultat=mysqli_fetch_all($query);
 //var_dump($resultat);
