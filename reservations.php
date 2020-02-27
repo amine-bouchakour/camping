@@ -128,6 +128,9 @@ if (isset($_SESSION['login']))
             $datedebut=strftime("%G%m%d", strtotime($dated));
             $datefin=strftime("%G%m%d", strtotime($datef));
 
+            $dateDebut2 = strtotime($dated);
+            $dateFin2 = strtotime($datef);
+
 
             $connexion=mysqli_connect("Localhost","root","","camping");
             //$requetehabitat="SELECT habitat FROM reservationplace WHERE datedebut BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."' OR datefin BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."'";
@@ -201,7 +204,7 @@ if (isset($_SESSION['login']))
          //$duree=$_POST['dureesejour'];
         
 
-        $duree = abs($datefin - $datedebut)/60/60/24 ; 
+        $duree = abs($dateFin2 - $dateDebut2)/60/60/24 ; 
          $optiontotal= $option1 + $option2 + $option3;
          $totalsejour=($optiontotal*$duree) + $duree*$tarifjour;
 
