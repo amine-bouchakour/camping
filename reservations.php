@@ -43,7 +43,7 @@ if (isset($_SESSION['login']))
             <option value="tente">En Tente</option>
             <option value="cpgcar">En Camping-car</option>
         </select><br> -->
-        <select type="text" name="dureesejour">
+        <!-- <select type="text" name="dureesejour">
             <option value="" selected="selected">-- Nbr de jours --</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -59,7 +59,7 @@ if (isset($_SESSION['login']))
             <option value="12">12</option>
             <option value="13">13</option>
             <option value="14">14</option>
-        </select>
+        </select> -->
         <br>
         Accès à la borne électrique (<?php echo $tarifborne; ?>€/jr)<input type="radio" name="borne" value="<?php echo $tarifborne ?>"><br>
         Accès au Disco-Club “Les girelles dansantes” (<?php echo $tarifdisco; ?>€/jr)<input type="radio" name="disco" value="<?php echo $tarifdisco ?>"><br>
@@ -113,7 +113,7 @@ if(isset($_POST['valider']))
 
        
 
-    if(!empty($_POST['dureesejour']) and !empty($_POST['datedebut']) and !empty($_POST['datefin']) and !empty($_GET['emplacement']) and !empty($_GET['habitat']))
+    if(!empty($_POST['datedebut']) and !empty($_POST['datefin']) and !empty($_GET['emplacement']) and !empty($_GET['habitat']))
     {
 
         // CONVERSION DATE EN SUITE DE NOMBRES
@@ -124,6 +124,10 @@ if(isset($_POST['valider']))
 
         $habitat=$_GET['habitat'];
         $place=$_GET['emplacement'];
+
+        // ajout ligne momo
+        $dateDebut2 = strtotime($dated);
+        $dateFin2 = strtotime($datef);
 
 
         $connexion=mysqli_connect("Localhost","root","","camping");
@@ -172,7 +176,7 @@ if(isset($_POST['valider']))
 
 
         // CALCUL SOMME TOTAL DU SEJOUR
-        $duree=$_POST['dureesejour'];
+        $duree = abs($dateFin2 - $dateDebut2)/60/60/24 ;
         $optiontotal= $option1 + $option2 + $option3;
         $totalsejour=($optiontotal*$duree) + $duree*$tarifjour;
 
@@ -199,11 +203,18 @@ if(isset($_POST['valider']))
             $_POST['yfs']='non';
         }
 
+        
+        if($datedebut>date('Ymd')){
+
+            if($datefin>$dated){
+
+
+
             if(($placedispo>=2 and $_GET['habitat']=='cpgcar') or ($placedispo>=1 and $_GET['habitat']=='tente'))
             {
 
                 $connexion=mysqli_connect("Localhost","root","","camping");
-                $requetereservation="INSERT INTO reservationplace (datedebut,datefin,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$datedebut."','".$datefin."','".$place."','".$habitat."','".$_POST['dureesejour']."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
+                $requetereservation="INSERT INTO reservationplace (datedebut,datefin,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$datedebut."','".$datefin."','".$place."','".$habitat."','".$duree."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['ID']."') ";
                 $queryreservation=mysqli_query($connexion,$requetereservation);
         
                 echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
@@ -219,6 +230,15 @@ if(isset($_POST['valider']))
             {
                 echo 'Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_GET['emplacement']).'<br/>'.'<br/>'; 
             }
+        }
+        else{
+            echo 'La date de réservation ne doit pas être inférieur à votre date d\'éntrée en camping'.'<br/>';
+        }
+
+        }
+        else{
+            echo 'Vous ne pouvez pas réservé à une date ultérieur à celle d\'aujourdhui'.'<br>';
+        }
 
         
         
