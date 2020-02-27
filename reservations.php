@@ -21,7 +21,7 @@ if (isset($_SESSION['login']))
     ?>
     <head>
         <title>Réservation</title>
-    
+        <link rel="stylesheet" href="camping.css">
     </head>
     
     
