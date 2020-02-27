@@ -19,22 +19,13 @@
 	{ ?>
 		<div class="statutUser">
 			<!-- <a href="reservations.php">Réservations</a><br> -->
-			<a href="profil.php">Profil</a><br>
-			<a href="deconnexion">Déconnexion</a><br>
 			<a href="planning.php">Planning</a><br>
-
-		</div>
-
+			<a href="profil.php">Profil</a><br>
 		<?php
 
 		if($_SESSION['login'] == 'admin')
 		{ ?>
-			<div class="statutUser">
-				<a href="admin.php">Page admin</a><br>
-			</div>
-			
-	<?php
-	}
+				<a href="admin.php">Page admin</a><br><?php }
 		}
 		else
 		{ ?>
@@ -45,5 +36,10 @@
 			
 		<?php 
 		}
+?>
+			<a href="deconnexion">Déconnexion</a><br>
+
+		</div><?php
+
 ?>
 
