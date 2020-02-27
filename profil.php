@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('header.php');
 if(isset($_SESSION['login'])){
 
 
@@ -12,11 +12,8 @@ if(isset($_SESSION['login'])){
 <link rel="stylesheet" href="camping.css">
 </head>
 
-<a href="index.php?pg=1">Page principale</a>
 <?php
-if(isset($_GET['pg']) and $_GET['pg']==1){
-    header("location:index.php");
-}
+
 
 echo '<h1>'.'Toutes vos réservations'.'</h1><br/>';
 
