@@ -131,6 +131,8 @@ if (isset($_SESSION['login']))
             $dateDebut2 = strtotime($dated);
             $dateFin2 = strtotime($datef);
 
+            $dateDebutSejour = date('d-m-Y', strtotime($dated));
+
 
             $connexion=mysqli_connect("Localhost","root","","camping");
             //$requetehabitat="SELECT habitat FROM reservationplace WHERE datedebut BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."' OR datefin BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."'";
@@ -240,7 +242,7 @@ if (isset($_SESSION['login']))
             $queryreservation=mysqli_query($connexion,$requetereservation);
 
             echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
-            echo 'Date d\'entrée en camping : '.$datedebut.'<br/>';
+            echo 'Date d\'entrée en camping : '.$dateDebutSejour.'<br/>';
             echo 'Lieu réservé : '.ucfirst($_GET['emplacement']).'<br/>';
             echo 'Type de logement : '.ucfirst($_GET['habitat']).'<br/>';
             echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
