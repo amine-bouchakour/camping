@@ -5,24 +5,23 @@
 		<link rel="stylesheet" type="text/css" href="camping.css">
 
 	</head>
-	<body>
+	<body = id="bodyconnexion">
+		<?php include('header.php'); ?>
 		<main>
-			<div>
-	 			<?php include('header.php'); ?>
-	 		</div>
+			
 	 		<div id="fullFormConnexion">
-	 			<div id="titreConnexion">CONNEXION</div>
+	 			<div id="titreConnexion">CONNEXION</div><br />
 	 			<div id="formConnexion">
 	 				<form action="" method="post"><br />
 
 		 				Login : <br /><input type="text" name="login"><br />
 		 				Password : <br /><input type="password" name="password"><br />
 	 				
-	 				</form>
-	 			</div>
-	 			<div id="buttonConnexion">
-	 				<input type="submit" name="valider">
-	 			</div>
+                    </div>
+                    <div id="buttonConnexion">
+                        <input type="submit" name="valider">
+                    </div>
+                </form>
 	 			
 	 		</div>
 			

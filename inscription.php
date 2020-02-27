@@ -6,9 +6,10 @@
 	</head>
 
 	<body id="bodyInscription">
+		<?php include('header.php'); ?>
 		<main>
 			<div>
-	 			<?php include('header.php'); ?>
+	 			
 	 		</div>
 			<div id="fullFormInscription">
 				<div id="titreInscription">INSCRIPTION</div>

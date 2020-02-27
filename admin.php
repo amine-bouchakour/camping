@@ -6,6 +6,8 @@
 session_start();
 
     if($_SESSION['login']=="admin"){
+        ?><meta http-equiv="refresh" content="30;"/><?php
+        echo '<a href="index.php">Page principale</a>';
 
         echo '<h1>Bienvenue admninistrateur'.'</h1><br/>';
 
@@ -13,28 +15,26 @@ session_start();
         ?>
         <head>
             <title>Page Admin</title>
-            <link rel="stylesheet" href="css/camping.css">
+            <link rel="stylesheet" href="camping.css">
         </head>
 
 
         <?php
 
-        if(!isset($_POST['habitat'])){
-            $habitat="tente";
-        }
-        else{
-            $habitat=$_POST['habitat'];
-        }
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' and habitat='".$habitat."' ORDER BY date,login DESC";
+
+        $requete="SELECT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY date DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
+        // echo $requete;
 
         $requete1bis0="SELECT * FROM reservationplace WHERE emplacement='pins'";
         $query1bis0=mysqli_query($connexion,$requete1bis0);
         $resultat1bis0=mysqli_fetch_all($query1bis0);
+        // var_dump($resultat1bis0);
         
+        // CALCUL SOMME TOTAL GAGNEE POUR LES PINS
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='pins'";
         $query0=mysqli_query($connexion,$requete0);
         $resultat0=mysqli_fetch_row($query0);
@@ -45,18 +45,15 @@ session_start();
         <h2>Nb de réservations total : <?php echo count($resultat1bis0) ?></h2>
         <h2>Sommes total cumulé sur les Pins : <?php echo $resultat0[0]; ?> euros</h2>
 
-        <form action="" method="post">
-            <select name="habitat">
-                <option value="tente">Tente</option>
-                <option value="cpgcar">Camping-car</option>
-            </select>
-            <input type="submit" value="valider">
-        </form>
+     
         <?php
 
         ?> <section class="sectionadmin"><article><?php
         $j=0;
         while($j<count($resultat)){
+
+        $id=$resultat[$j][3];
+        $id_utilisateur=$resultat[$j][12];
 
               
         $login=ucfirst($resultat[$j][1]);
@@ -94,23 +91,35 @@ session_start();
         <td>Prix total TTC = $prixtotal Euros</td>
         </tr>
         <tr>
-        <td><a href=''>ANNULER RESERVATION</a></td>
-        </tr></table>"
-        ;
+        <td>
+        <a href='admin.php?id=$id'>ANNULER RESERVATION</a>
+        <a href='admin.php?idbis=$id_utilisateur'>SUPPRIMER COMPTE</a>
+        </td>
+        </tr></table>";
         ++$j;
         ?> <?php
 
         }
         ?></article></section><?php
 
-        if(!isset($_POST['habitat1'])){
-            $habitat1="tente";
-        }
-        else{
-            $habitat1=$_POST['habitat1'];
+        // SUPPRESSION RESERVATION
+        if(isset($_GET['id'])){
+            $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
+            $query1=mysqli_query($connexion,$requete1);
+            $_GET['id']=0;
         }
 
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='plage' and habitat='".$habitat1."' ORDER BY date,login DESC";
+        // SUPPRESSION COMPTE ET RESERVATION
+        if(isset($_GET['idbis'])){
+            $requete2="DELETE FROM utilisateurs  WHERE utilisateurs.id='".$_GET['idbis']."'";
+            $query2=mysqli_query($connexion,$requete2);
+            $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['idbis']."'";
+            $query3=mysqli_query($connexion,$requete3);
+        }
+
+      
+
+        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='plage' ORDER BY date DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
@@ -119,6 +128,7 @@ session_start();
         $resultat1=mysqli_fetch_all($query1);
         
 
+        // CALCUL SOMME TOTAL GAGNEE POUR LA PLAGE
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='plage'";
         $query0=mysqli_query($connexion,$requete0);
         $resultat0=mysqli_fetch_row($query0);
@@ -130,20 +140,16 @@ session_start();
         <h2>Nb de réservations total : <?php echo count($resultat1) ?></h2>
         <h2>Sommes total cumulé sur le plage : <?php echo $resultat0[0]; ?> euros</h2>
 
-        <form action="" method="post">
-            <select name="habitat1">
-                <option value="tente">Tente</option>
-                <option value="cpgcar">Camping-car</option>
-            </select>
-            <input type="submit" value="valider">
-        </form>
+
         <?php
 
         ?><section class="sectionadmin"><article><?php
         $j=0;
         while($j<count($resultat)){
 
-              
+        $id=$resultat[$j][3];
+        $id_utilisateur=$resultat[$j][12];
+        
         $login=ucfirst($resultat[$j][1]);
         $nb_reservation=count($resultat);
         $date=$resultat[$j][4];
@@ -176,21 +182,34 @@ session_start();
         </tr>
         <tr>
         <td>Prix total TTC = $prixtotal Euros</td>
+        </tr>
+        <tr>
+        <td>
+        <a href='admin.php?id1=$id'>ANNULER RESERVATION</a>
+        <a href='admin.php?id1bis=$id_utilisateur'>SUPPRIMER COMPTE</a>
+        </td>
         </tr></table>"
         ;
         ++$j;
         }
         ?></article></section><?php
+
+        // SUPPRESSION RESERVATION
+        if(isset($_GET['id1'])){
+            $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id1']."'";
+            $query1=mysqli_query($connexion,$requete1);
+            $_GET['id1']=0;
+        }
+        // SUPPRESSION COMPTE ET RESERVATION
+        if(isset($_GET['id1bis'])){
+            $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id1bis']."'";
+            $query2=mysqli_query($connexion,$requete2);
+            $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id1bis']."'";
+            $query3=mysqli_query($connexion,$requete3);
+        }
        
-        if(!isset($_POST['habitat2'])){
-            $habitat2="tente";
-        }
-        else{
-            $habitat2=$_POST['habitat2'];
-        }
 
-
-        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='maquis' and habitat='".$habitat2."' ORDER BY date,login DESC";
+        $requete="SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='maquis' ORDER BY date DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
         // var_dump($resultat);
@@ -198,6 +217,7 @@ session_start();
         $query1bis=mysqli_query($connexion,$requete1bis);
         $resultat1bis=mysqli_fetch_all($query1bis);
       
+        // CALCUL SOMME TOTAL GAGNEE POUR LE MAQUIS
         $requete0="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='maquis'";
         $query0=mysqli_query($connexion,$requete0);
         $resultat0=mysqli_fetch_row($query0);
@@ -208,18 +228,15 @@ session_start();
         <h2>Nb de réservations total : <?php echo count($resultat1bis) ?></h2>
         <h2>Sommes total cumulé sur le maquis : <?php echo $resultat0[0]; ?> euros</h2>
 
-        <form action="" method="post">
-            <select name="habitat2">
-                <option value="tente">Tente</option>
-                <option value="cpgcar">Camping-car</option>
-            </select>
-            <input type="submit" value="valider">
-        </form>
+       
         <?php
 
         ?> <section class="sectionadmin"><article><?php
         $j=0;
         while($j<count($resultat)){
+
+        $id=$resultat[$j][3];
+        $id_utilisateur=$resultat[$j][12];
 
               
         $login=ucfirst($resultat[$j][1]);
@@ -254,6 +271,12 @@ session_start();
         </tr>
         <tr>
         <td>Prix total TTC = $prixtotal Euros</td>
+        </tr>
+        <tr>
+        <td>
+        <a href='admin.php?id2=$id'>ANNULER RESERVATION</a>
+        <a href='admin.php?id2bis=$id_utilisateur'>SUPPRIMER COMPTE</a>
+        </td>
         </tr></table>"
         ;
         ++$j;
@@ -261,6 +284,23 @@ session_start();
         ?></article></section>
         
         <?php
+
+        // SUPPRESSION RESERVATION
+        if(isset($_GET['id2'])){
+            $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id2']."'";
+            $query1=mysqli_query($connexion,$requete1);
+            $_GET['id2']=0;
+        }
+
+        // SUPPRESSION COMPTE ET RESERVATION
+        if(isset($_GET['id2bis'])){
+            $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id2bis']."'";
+            $query2=mysqli_query($connexion,$requete2);
+            // echo $requete2;
+            $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id2bis']."'";
+            $query3=mysqli_query($connexion,$requete3);
+            // echo $requete3;
+        }
         
         $connexion=mysqli_connect("Localhost","root","","camping");
         $requete = "SELECT jour,borne,disco,yfs FROM tarif";
