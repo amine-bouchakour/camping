@@ -132,7 +132,7 @@ if(isset($_POST['valider']))
 
         $connexion=mysqli_connect("Localhost","root","","camping");
         // $requetehabitat="SELECT habitat FROM reservationplace WHERE datedebut BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."' OR datefin BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."'";
-        $requetehabitat="SELECT habitat,datedebut,datefin FROM reservationplace WHERE $datedebut BETWEEN datedebut AND datefin AND $datefin BETWEEN datedebut AND datefin AND emplacement='".$place."'";
+        $requetehabitat="SELECT habitat,datedebut,datefin FROM reservationplace WHERE $datedebut BETWEEN datedebut AND datefin OR $datefin BETWEEN datedebut AND datefin AND emplacement='".$place."'";
         $queryhabitat=mysqli_query($connexion,$requetehabitat);
         
         $resultathabitat=mysqli_fetch_all($queryhabitat);
@@ -206,7 +206,7 @@ if(isset($_POST['valider']))
         
         if($datedebut>date('Ymd')){
 
-            if($datefin>$dated){
+            if($datefin>=$datedebut){
 
 
 
