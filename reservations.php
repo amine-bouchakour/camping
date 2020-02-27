@@ -70,6 +70,7 @@ if (isset($_SESSION['login']))
 }
 else
 {
+    header("location:connexion.php");
     echo 'La page est inacessible si vous n\'êtes connecté.';
 }
 ?>
