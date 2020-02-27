@@ -3,11 +3,10 @@
 
 
 <?php
-session_start();
+include('header.php');
 
     if($_SESSION['login']=="admin"){
         ?><meta http-equiv="refresh" content="30;"/><?php
-        echo '<a href="index.php">Page principale</a>';
 
         echo '<h1>Bienvenue admninistrateur'.'</h1><br/>';
 
@@ -26,8 +25,8 @@ session_start();
         $requete="SELECT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY datedebut DESC";
         $query=mysqli_query($connexion,$requete);
         $resultat=mysqli_fetch_all($query);
-        var_dump($resultat);
-        echo $requete;
+        // var_dump($resultat);
+        // echo $requete;
 
         $requete1bis0="SELECT * FROM reservationplace WHERE emplacement='pins'";
         $query1bis0=mysqli_query($connexion,$requete1bis0);
