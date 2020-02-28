@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
+
+
 body{
     margin: 0;
 }
@@ -14,27 +18,27 @@ body{
 }
 
 
-
-h1,h2{
-    font-weight: bold;
-    text-align: center;
-}
-
 table{
     font-size: 1.5vw;
     margin:0px auto 50px;
-   text-align: left;
+    text-align: left;
+    border: 4px black solid;
+    text-align: center;
+    padding:10px;
+}
+
+tr>.tableplanning{
    border: 4px black solid;
+
 }
 
 .tableindex{
     font-size: 2.5vw;
     margin:5% auto;
     padding:15px;
-   text-align: center;
-   border: 4px black solid;
-   border-radius: 1em;
-   background-color: rgba(113, 88, 255, 0.527);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.527);
+    color: black;
 }
 
 form{
@@ -42,7 +46,52 @@ form{
     text-align: center;
 }
 
+/*-----------------------HEADER-------------------*/
+/*-----------------------HEADER-------------------*/
+/*-----------------------HEADER-------------------*/
+/*-----------------------HEADER-------------------*/
+/*-----------------------HEADER-------------------*/
+/*-----------------------HEADER-------------------*/
+/*-----------------------HEADER-------------------*/
+/*-----------------------HEADER-------------------*/
 
+header{
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#topofheader{
+    height: 100px;
+    background-color: orange;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+
+#sardinelogo{
+    width: 50%;
+}
+
+#h1titre{
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Fjalla One';
+}
+
+#headermenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 25px;
+    background-color: rgb(156, 156, 156);
+    font-family: 'Roboto';
+}
+
+#headermenu a:hover{
+    background-color: rgba(238, 238, 238, 0.281);
+}
 
 /*-----------------------INDEX-------------------*/
 /*-----------------------INDEX-------------------*/
@@ -54,20 +103,20 @@ form{
 /*-----------------------INDEX-------------------*/
 
 #bodyindex{
-    background-image: url("img/bodybackground.jpg");
+    background-image: url("img/campingindexbg.jpg");
     background-size: cover;
     color:white;
 }
 
 a
 {
-color: rgb(255, 233, 108);
+color: rgb(0, 0, 0);
 text-decoration: none;
 }
 
 #titreIndex{
     color: white ;
-    font-family: ;
+    /* font-family: ; */
     font-size: 30px ;
     width: 100% ;
     padding-top: 3% ;
@@ -77,13 +126,15 @@ text-decoration: none;
 }
 
 .statutUser{
+    display: flex;
+    flex-direction: row;
     text-align: center;
-    font-size: 20px ;
-  
-    width: 100% ;
-    height: 100px ;
-    background-color: red ;
-    margin-top: 3%;
+    justify-content: space-evenly;
+    font-size: xx-large;
+    width: 100%;
+    height: 10%;
+    background-color: red;
+    margin: 0 auto 10%;
 }
 
 
