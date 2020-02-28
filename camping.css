@@ -4,6 +4,7 @@
 
 body{
     margin: 0;
+    padding: 0;
 }
 
 .sectionadmin{
@@ -17,32 +18,7 @@ body{
     overflow: auto;    
 }
 
-
-table{
-    font-size: 1.5vw;
-    margin:0px auto 50px;
-    text-align: left;
-    border: 4px black solid;
-    text-align: center;
-    padding:10px;
-}
-
-tr>.tableplanning{
-   border: 4px black solid;
-
-}
-
-.tableindex{
-    font-size: 2.5vw;
-    margin:5% auto;
-    padding:15px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.527);
-    color: black;
-}
-
 form{
-
     text-align: center;
 }
 
@@ -87,10 +63,19 @@ header{
     font-size: 25px;
     background-color: rgb(156, 156, 156);
     font-family: 'Roboto';
+    border-top: 1.5px solid black;
+    border-bottom: 1.5px solid black;
+}
+
+header a
+{
+    text-decoration: none;
+    font-family: 'Roboto';
+    color: white;
 }
 
 #headermenu a:hover{
-    background-color: rgba(238, 238, 238, 0.281);
+    background-color: rgba( 238, 238, 238, 0.281);
 }
 
 /*-----------------------INDEX-------------------*/
@@ -103,26 +88,38 @@ header{
 /*-----------------------INDEX-------------------*/
 
 #bodyindex{
-    background-image: url("img/campingindexbg.jpg");
+    background-image:URL('img/campingindexbg.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
     color:white;
 }
 
-a
-{
-color: rgb(0, 0, 0);
-text-decoration: none;
+.tableindex{
+    font-size: 25px;
+    padding:15px;
+    text-align: center;
+    color: black;
+    margin-left: 25%;
 }
 
-#titreIndex{
-    color: white ;
-    /* font-family: ; */
-    font-size: 30px ;
-    width: 100% ;
-    padding-top: 3% ;
-    height: 100px ;
+.tableindex a
+{
+text-decoration: none;
+font-family: 'Roboto';
+color: black;
+}
+
+#topofindexform{
+    padding-top: 150px;
+    color: black;
     text-align: center;
-    background-color: rgb(0, 0, 0 ,0.5);  
+    font-size: 25px;
+    font-family:'Roboto';
+}
+
+#topofindexform a:hover{
+    background-color: black;
+    color: white;
 }
 
 .statutUser{
@@ -134,9 +131,22 @@ text-decoration: none;
     width: 100%;
     height: 10%;
     background-color: red;
-    margin: 0 auto 10%;
 }
 
+#formsectionindex{
+    padding-top:10%;
+}
+
+#indexflex{
+    background-color: rgba(255, 255, 255, 0.897);
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    height: 100%;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
 
 /*-----------------------INSCRIPTION-------------------*/
 /*-----------------------INSCRIPTION-------------------*/
@@ -203,13 +213,15 @@ text-decoration: none;
 /*-----------------------CONNEXION-------------------*/
 /*-----------------------CONNEXION-------------------*/
 
+#bodyconnexion{
+    
+}
 
 #fullFormConnexion{
     width: 50% ;
-    height: 300px ;
+    height: 400px ;
     margin: 0 auto ;
-    margin-top: 5% ;
-    padding-top: 3% ;
+    padding-top: 17.45%;
     background-color: rgb(0, 0, 0, 0.5);
     text-align: center;
 }
@@ -217,29 +229,50 @@ text-decoration: none;
 #titreConnexion{
     color: white ;
     font-size: 30px ;
-    background-color: rgb(255, 0, 0, 0.5);
+    background-color: orange;
     width: 50%;
     margin: 0 auto ;
+    border-radius: 15px 15px 0px 0px;
 }
 
 #formConnexion{
     width: 50% ;
     margin: 0 auto ;
-    color: red ;
+    color: black;
     background-color:  rgb(255, 223, 195, 0.5) ;
+    padding-bottom: 3%;
+    border-radius: 0px 0px 15px 15px;
+    font-family: 'Roboto';
 }
 
 #buttonConnexion{
     width: 30% ;
     margin: 0 auto ;
     margin-top: 3%;
-    background-color: rgb(255, 136, 62, 0.5);
     border-radius: 10px;
-
+    padding: 2%;
 }
 
 
 #buttonConnexion input {
     border-radius: 10px ;
     
+}
+
+/*-----------------------FOOTER-------------------*/
+/*-----------------------FOOTER-------------------*/
+/*-----------------------FOOTER-------------------*/
+/*-----------------------FOOTER-------------------*/
+/*-----------------------FOOTER-------------------*/
+/*-----------------------FOOTER-------------------*/
+/*-----------------------FOOTER-------------------*/
+/*-----------------------FOOTER-------------------*/
+
+footer{
+    background-color: orange;
+    font-size: 30px;
+    height: 200px;
+    border-top: 2px solid white;
+    text-align: center;
+    font-family: 'Roboto';
 }
