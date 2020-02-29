@@ -22,17 +22,18 @@
                     <div id="buttonConnexion">
                         <input type="submit" name="valider">
                     </div>
+                    <?php
+
+	                    include('fonctions.php');
+	                    connexion();
+	                ?>
                 </form>
 	 			
 	 		</div>
 			
 
 
-			<?php
-
-			include('fonctions.php');
-			connexion();
-			?>
+			
 		</main>
 		
 	</body>
