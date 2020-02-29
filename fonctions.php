@@ -14,7 +14,7 @@ function inscription()
             $resultat0=mysqli_fetch_row($query0);
     
             if($resultat0==0)
-            {
+            { 
     
                 if($_POST['password']==$_POST['confirmpassword'])
                 {
