@@ -5,12 +5,13 @@
 		<link rel="stylesheet" type="text/css" href="camping.css">
 
 	</head>
-	<body = id="bodyconnexion">
+	<body id="bodyConnexion">
 		<?php include('header.php'); ?>
-		<main>
-			
+		<main id="mainConnexion">
+		
+	 			
 	 		<div id="fullFormConnexion">
-	 			<div id="titreConnexion">CONNEXION</div><br />
+	 			<div id="titreConnexion">CONNEXION</div>
 	 			<div id="formConnexion">
 	 				<form action="" method="post"><br />
 

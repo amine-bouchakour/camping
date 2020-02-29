@@ -7,10 +7,8 @@
 
 	<body id="bodyInscription">
 		<?php include('header.php'); ?>
-		<main>
-			<div>
-	 			
-	 		</div>
+		<main id="mainInscription">
+			
 			<div id="fullFormInscription">
 				<div id="titreInscription">INSCRIPTION</div>
 				<form action="" method="post" ><br />

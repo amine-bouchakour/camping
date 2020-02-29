@@ -84,7 +84,7 @@ function connexion()
                     if(password_verify($password, $resultat[2]))
                     {
                         session_start();
-                        $_SESSION['ID']=$resultat[0];
+                        $_SESSION['id']=$resultat[0];
                         $_SESSION['login']=$resultat[1];
                         header('location:index.php');
                     }
