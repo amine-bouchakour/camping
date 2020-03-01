@@ -5,11 +5,11 @@
 	</head>
 	<body>
 		<main>
-			<div id="titreIndex"><h1>Le Camping des Happy Sardines</h1></div>
 		</main>
 
 	</body>
 </html>
+<header>
 
 <?php
 
@@ -17,9 +17,13 @@
 
 	if(isset($_SESSION['login']))
 	{ ?>
-		<div class="statutUser">
+	<section id="topofheader">
+		<a href="index.php"><img id="sardinelogo" src="img/sardine.png"></a>
+		<h1 id="h1titre">Bienvenue au camping " Les Happy Sardines " !</h1>
+		</section>
+		<section id="headermenu">
 			<!-- <a href="reservations.php">Réservations</a><br> -->
-			<a href="index.php?pg=1">Page principale</a><br>
+			<a href="index.php">Page principale</a><br>
 			<a href="planning.php">Planning</a><br>
 			<a href="profil.php">Profil</a><br>
 			<a href="deconnexion">Déconnexion</a><br>
@@ -28,20 +32,23 @@
 
 		if($_SESSION['login'] == 'admin')
 		{ ?>
-				<a href="admin.php">Page admin</a><br><?php }
+				<a href="admin.php">Page admin</a><br></section><?php }
 		}
 		else
 		{ ?>
+		<section id="topofheader">
+		<a href="index.php"><img id="sardinelogo" src="img/sardine.png"></a>
+		<h1 id="h1titre">Bienvenue au camping " Les Happy Sardines " !</h1>
+		</section>
+		<section id="headermenu">
 			<div class="statutUser">
 				<a href="connexion.php">Connexion</a><br>
 				<a href="inscription.php">Inscription</a><br>
-			</div>
 			
-		<?php 
+			</section><?php 
 		}
 ?>
 
-		</div><?php
-
-?>
-
+		</div>
+</header>
+		

@@ -12,7 +12,7 @@
 	 		</div>
 <?php
 
-echo '<table class="tableindex">
+?> <table class="tableindex">
 <tr >
 <td></td>
 <td >La Plage</td>
@@ -32,7 +32,8 @@ echo '<table class="tableindex">
 <td class="tableindex"><a href="reservations.php?emplacement=pins&amp;habitat=tente">Réserver</a></td>
 <td class="tableindex"><a href="reservations.php?emplacement=maquis&amp;habitat=tente">Réserver</a></td>
 </tr>
-</table';
+</table>
+<?php
 
 ?>
 

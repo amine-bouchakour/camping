@@ -2,100 +2,128 @@ body{
     margin: 0;
 }
 
-.sectionadmin{
-    
-    margin:0px auto 130px;
-    width: 50%;
-    height: 50%;
-    border: 10px black solid;
-    border-radius: 2em 0em 0em 2em;
-    background-color: bisque;
-    overflow: auto;    
+
+
+/*-----------------------HEADER / FOOTER-------------------*/
+/*-----------------------HEADER / FOOTER-------------------*/
+/*-----------------------HEADER / FOOTER-------------------*/
+/*-----------------------HEADER / FOOTER-------------------*/
+/*-----------------------HEADER / FOOTER-------------------*/
+/*-----------------------HEADER / FOOTER-------------------*/
+/*-----------------------HEADER / FOOTER-------------------*/
+/*-----------------------HEADER / FOOTER-------------------*/
+
+header{
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-
-
-h1,h2{
-    font-weight: bold;
-    text-align: center;
-}
-
-table{
-    font-size: 1.5vw;
-    margin:0px auto 50px;
-   text-align: left;
-   border: 4px black solid;
-   text-align: center;
-   padding:10px;
-}
-
-tr>.tableplanning{
-   border: 4px black solid;
-
-}
-
-.tableindex{
-    font-size: 2.5vw;
-    margin:5% auto;
-    padding:15px;
-   text-align: center;
-   border: 4px black solid;
-   border-radius: 1em;
-   background-color: rgba(113, 88, 255, 0.527);
-}
-
-form{
-
-    text-align: center;
-}
-
-
-
-/*-----------------------INDEX-------------------*/
-/*-----------------------INDEX-------------------*/
-/*-----------------------INDEX-------------------*/
-/*-----------------------INDEX-------------------*/
-/*-----------------------INDEX-------------------*/
-/*-----------------------INDEX-------------------*/
-/*-----------------------INDEX-------------------*/
-/*-----------------------INDEX-------------------*/
-
-#bodyindex{
-    background-image: url("img/bodybackground.jpg");
-    background-size: cover;
-    color:white;
-}
-
-a
-{
-color: rgb(0, 0, 0);
-text-decoration: none;
-}
-
-#titreIndex{
-    color: white ;
-    /* font-family: ; */
-    font-size: 30px ;
-    width: 100% ;
-    padding-top: 3% ;
-    height: 100px ;
-    text-align: center;
-    background-color: rgb(0, 0, 0 ,0.5);  
-}
-
-.statutUser{
+#topofheader{
+    height: 100px;
+    background-color: orange;
     display: flex;
     flex-direction: row;
+    padding-bottom: 10px;
+    margin:0;
+}
+
+#sardinelogo{
+    width: 50%;
+}
+
+#h1titre{
     text-align: center;
-    justify-content: space-evenly;
-    font-size: xx-large;
-    width: 100%;
-    height: 10%;
-    background-color: red;
-    margin: 0 auto 10%;
+    font-size: 35px;
+    font-family: 'Fjalla One';
+}
+
+#headermenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 25px;
+    background-color: rgb(156, 156, 156);
+    font-family: 'Roboto';
+    border-top: 1.5px solid black;
+    border-bottom: 1.5px solid black;
+}
+
+header a
+{
+    text-decoration: none;
+    font-family: 'Roboto';
+    color: white;
+}
+
+#headermenu a:hover{
+    background-color: rgba( 238, 238, 238, 0.281);
 }
 
 
+
+
+
+
+
+
+/*-----------------------INDEX-------------------*/
+/*-----------------------INDEX-------------------*/
+/*-----------------------INDEX-------------------*/
+/*-----------------------INDEX-------------------*/
+/*-----------------------INDEX-------------------*/
+/*-----------------------INDEX-------------------*/
+/*-----------------------INDEX-------------------*/
+/*-----------------------INDEX-------------------*/
+
+
+
+
+#mainindex{
+    background-image: url(img/indexbackground.jpg);
+    background-size: cover;
+    height: 1000px;
+    padding-top: 10%;
+}
+
+
+/* #titreIndex{
+    background-image: radial-gradient(red, green);
+    font-size: 30px ;
+    width: 100% ;
+    padding-top: 1px;
+    height: 150px ;
+    text-align: center;
+} */
+
+#titreIndex a{
+    color: white;
+}
+
+
+#tableReservation{
+    margin-top: 5%;
+    padding-top: 10%;
+    
+}
+
+
+.tableindex{
+    
+    font-size: 2vw;
+    margin:0 auto;
+    margin-top: 10%;
+    padding:15px;
+    margin-top: 5%;
+    text-align: center;
+    border: 4px black solid;
+    border-radius: 1em;
+    background-color: rgba(113, 88, 255, 0.5);
+}
+
+
+
 /*-----------------------INSCRIPTION-------------------*/
 /*-----------------------INSCRIPTION-------------------*/
 /*-----------------------INSCRIPTION-------------------*/
@@ -105,9 +133,11 @@ text-decoration: none;
 /*-----------------------INSCRIPTION-------------------*/
 /*-----------------------INSCRIPTION-------------------*/
 
-#bodyInscription{
+#mainInscription{
+    padding-top: 10%;
     background-image: url("img/backgroundinscription.jpg");
     background-size: cover;
+
 }
 
 #fullFormInscription{
@@ -161,6 +191,11 @@ text-decoration: none;
 /*-----------------------CONNEXION-------------------*/
 /*-----------------------CONNEXION-------------------*/
 
+#mainConnexion{
+    padding-top: 10%;
+    background-image: url(img/connexionback.jpg);
+    background-size: cover;
+}
 
 #fullFormConnexion{
     width: 50% ;
@@ -200,4 +235,184 @@ text-decoration: none;
 #buttonConnexion input {
     border-radius: 10px ;
     
+}
+
+
+
+/*-----------------------Reservation-------------------*/
+/*-----------------------Reservation-------------------*/
+/*-----------------------Reservation-------------------*/
+/*-----------------------Reservation-------------------*/
+/*-----------------------Reservation-------------------*/
+/*-----------------------Reservation-------------------*/
+/*-----------------------Reservation-------------------*/
+/*-----------------------Reservation-------------------*/
+
+#mainReservation{
+    padding-top : 10% ;
+    background-image: url(img/resabackground.jpg);
+    background-size: cover;
+    height: 800px;
+    
+}
+
+#sectionFormReservation{
+    background-color: red;
+}
+
+#formReservation{
+    width: 50%;
+    margin : 0 auto;
+    background-color: blue;
+    padding: 2%;
+    text-align: center;
+}
+
+
+/*-----------------------PROFIL-------------------*/
+/*-----------------------PROFIL-------------------*/
+/*-----------------------PROFIL-------------------*/
+/*-----------------------PROFIL-------------------*/
+/*-----------------------PROFIL-------------------*/
+/*-----------------------PROFIL-------------------*/
+/*-----------------------PROFIL-------------------*/
+/*-----------------------PROFIL-------------------*/
+
+
+#mainprofil{
+    padding-top: 10%;
+    background-image: url(img/profilbackground.jpg);
+    background-size: cover;
+}
+
+
+.formulaireprofil{
+    width: 30%;
+    height: 400px;
+    margin: 0 auto ;
+    text-align: center;
+    color: white;
+    background-color: rgb(232, 13, 12, 0.5);
+}
+
+#titreprofil{
+
+}
+
+.infoprofil{
+    padding : 3%;
+    margin: 0 auto ;
+    width: 40%;
+    height: 200px;
+    text-align: center;
+    background-color: rgb(255, 120, 13, 0.5);
+}
+
+#reservationUser{
+    margin: 0 auto ;
+    width: 50%;
+    text-align: center;
+    background-color: purple ;
+    font-size: 20px;
+}
+
+#tableauReservation{
+    margin: 0 auto ;
+    width: 50%;
+    text-align: center;
+    background-color: white ;
+    color: black;
+}
+
+#tableReservation{
+    border-collapse: collapse;
+
+}
+
+#tableReservation tr, td {
+    border-style: solid;
+}
+
+#actionUser{
+
+}
+
+
+/*-----------------------Planning-------------------*/
+/*-----------------------Planning-------------------*/
+/*-----------------------Planning-------------------*/
+/*-----------------------Planning-------------------*/
+/*-----------------------Planning-------------------*/
+/*-----------------------Planning-------------------*/
+/*-----------------------Planning-------------------*/
+/*-----------------------Planning-------------------*/
+
+#mainPlanning{
+    padding-top: 10%;
+    background-image: url(img/backplanning.jpg);
+    background-size: cover;
+    height: 900px;
+}
+
+#titrePlanning{
+    margin : 0 auto ;
+    width: 50%;
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+.tablePlanning{
+    margin: 0 auto ;
+    background-color: rgb(0, 0, 0);
+    border-collapse: collapse;
+    border-style: solid;
+    border-color: black;
+    color :white;
+}
+
+.tablePlanning a{
+    color: red;
+}
+
+
+
+/*-----------------------Admin-------------------*/
+/*-----------------------Admin-------------------*/
+/*-----------------------Admin-------------------*/
+/*-----------------------Admin-------------------*/
+/*-----------------------Admin-------------------*/
+/*-----------------------Admin-------------------*/
+/*-----------------------Admin-------------------*/
+/*-----------------------Admin-------------------*/
+
+#mainAdmin{
+    padding-top: 10%;
+}
+
+.sectionadmin{
+    
+    margin:0px auto 130px;
+    width: 50%;
+    height: 50%;
+    border: 10px black solid;
+    border-radius: 2em 0em 0em 2em;
+    background-color: bisque;
+    overflow: auto;    
+    scrollbar-highlight-color: brown;
+}
+
+
+.infoEmplacement{
+    margin: 0 auto ;
+    width: 50%;
+    text-align: center;
+    background-color: red;
+}
+
+#modifPrix{
+    margin: 0 auto ;
+    width: 50%;
+    text-align: center;
+    background-color: red;
 }
