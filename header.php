@@ -5,6 +5,7 @@
 	</head>
 	<body>
 		<main>
+			<div id="titreIndex"><h1>Le Camping des Happy Sardines</h1></div>
 		</main>
 
 	</body>
@@ -22,6 +23,7 @@
 		<h1 id="h1titre">Bienvenue au camping " Les Happy Sardines " !</h1>
 		</section>
 		<section id="headermenu">
+		<div class="statutUser">
 			<!-- <a href="reservations.php">Réservations</a><br> -->
 			<a href="index.php">Page principale</a><br>
 			<a href="planning.php">Planning</a><br>
@@ -44,6 +46,7 @@
 			<div class="statutUser">
 				<a href="connexion.php">Connexion</a><br>
 				<a href="inscription.php">Inscription</a><br>
+			</div>
 			
 			</section><?php 
 		}
