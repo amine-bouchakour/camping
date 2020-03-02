@@ -6,10 +6,9 @@
 	</head>
 
 	<body id="bodyInscription">
-		<main>
-			<div>
-	 			<?php include('header.php'); ?>
-	 		</div>
+		<?php include('header.php'); ?>
+		<main id="mainInscription">
+			
 			<div id="fullFormInscription">
 				<div id="titreInscription">INSCRIPTION</div>
 				<form action="" method="post" ><br />
@@ -32,6 +31,7 @@
 			include('fonctions.php');
 			inscription();
 			?>
+			<?php include('footer.php'); ?>
 		</main>
 	</body>
 </html>

@@ -15,7 +15,7 @@
                 {
                     ?><meta http-equiv="refresh" content="30;"/><?php
 
-                    echo '<p>Bienvenue admninistrateur'.'</p><br/>';
+                    echo '<p id="titreAdmin">Bienvenue admninistrateur'.'</p><br/>';
 
                     $connexion=mysqli_connect("Localhost","root","","camping");
                                        
@@ -24,13 +24,12 @@
                     $requetePins="SELECT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='pins' ORDER BY datedebut DESC";
                     $queryPins=mysqli_query($connexion,$requetePins);
                     $resultatPins=mysqli_fetch_all($queryPins);
-                    //var_dump($resultatPins);
-                    // echo $requete;
+                    
 
                     $requeteResaPins = "SELECT * FROM reservationplace WHERE emplacement='pins'";
                     $queryResaPins = mysqli_query($connexion,$requeteResaPins);
                     $resultatResaPins = mysqli_fetch_all($queryResaPins);
-                    // var_dump($resultat1bis0);
+                    
                     
                     // CALCUL SOMME TOTAL GAGNEE POUR LES PINS
                     $requetePrixPins="SELECT SUM(prixtotal) FROM reservationplace WHERE emplacement='pins'";
@@ -113,17 +112,17 @@
 
                     // SUPPRESSION RESERVATION
                     if(isset($_GET['id'])){
-                        $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
-                        $query1=mysqli_query($connexion,$requete1);
+                        $requeteDeleteResa="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
+                        $query1=mysqli_query($connexion,$requeteDeleteResa);
                         $_GET['id']=0;
                     }
 
                     // SUPPRESSION COMPTE ET RESERVATION
                     if(isset($_GET['idbis'])){
-                        $requete2="DELETE FROM utilisateurs  WHERE utilisateurs.id='".$_GET['idbis']."'";
-                        $query2=mysqli_query($connexion,$requete2);
-                        $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['idbis']."'";
-                        $query3=mysqli_query($connexion,$requete3);
+                        $requeteDeleteUser="DELETE FROM utilisateurs  WHERE utilisateurs.id='".$_GET['idbis']."'";
+                        $query2=mysqli_query($connexion,$requeteDeleteUser);
+                        $requeteDeleteResaUser="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['idbis']."'";
+                        $query3=mysqli_query($connexion,$requeteDeleteResaUser);
                     }
 
                   
@@ -132,8 +131,7 @@
                     $queryPlage=mysqli_query($connexion,$requetePlage);
                     $resultatPlage=mysqli_fetch_all($queryPlage);
                      
-                    // var_dump($resultatPlage);
-
+                    
                     $requeteResaPlage = "SELECT * FROM reservationplace WHERE emplacement='plage'";
                     $queryResaPlage = mysqli_query($connexion,$requeteResaPlage);
                     $resultatResaPlage=mysqli_fetch_all($queryResaPlage);
@@ -227,24 +225,25 @@
 
                     // SUPPRESSION RESERVATION
                     if(isset($_GET['id1'])){
-                        $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id1']."'";
-                        $query1=mysqli_query($connexion,$requete1);
-                        $_GET['id1']=0;
-                        // header('location:admin.php');
+                        $requeteDeleteResa="DELETE FROM reservationplace WHERE id='".$_GET['id1']."'";
+
+                        $query1=mysqli_query($connexion,$requeteDeleteResa);
+                        
+                        header('location:admin.php');
                     }
                     // SUPPRESSION COMPTE ET RESERVATION
                     if(isset($_GET['id1bis'])){
-                        $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id1bis']."'";
-                        $query2=mysqli_query($connexion,$requete2);
-                        $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id1bis']."'";
-                        $query3=mysqli_query($connexion,$requete3);
+                        $requeteDeleteUser="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id1bis']."'";
+                        $query2=mysqli_query($connexion,$requeteDeleteUser);
+                        $requeteDeleteResaUser="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id1bis']."'";
+                        $query3=mysqli_query($connexion,$requeteDeleteResaUser);
                     }
                    
 
                     $requeteMaquis = "SELECT DISTINCT * FROM utilisateurs INNER JOIN reservationplace WHERE utilisateurs.Id = reservationplace.id_utilisateur and emplacement='maquis' ORDER BY datedebut DESC";
                     $queryMaquis=mysqli_query($connexion,$requeteMaquis);
                     $resultatMaquis=mysqli_fetch_all($queryMaquis);
-                    // var_dump($resultat);
+                    
                     $requeteResaMaquis = "SELECT * FROM reservationplace WHERE emplacement='maquis'";
                     $queryResaMaquis = mysqli_query($connexion,$requeteResaMaquis);
                     $resultatResaMaquis=mysqli_fetch_all($queryResaMaquis);
@@ -330,19 +329,21 @@
 
                     // SUPPRESSION RESERVATION
                     if(isset($_GET['id2'])){
-                        $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id2']."'";
-                        $query1=mysqli_query($connexion,$requete1);
-                        $_GET['id2']=0;
+                        $requeteDeleteResa="DELETE FROM reservationplace WHERE id='".$_GET['id2']."'";
+                        $query1=mysqli_query($connexion,$requeteDeleteResa);
+                       
+                       header('location:admin.php');
                     }
 
                     // SUPPRESSION COMPTE ET RESERVATION
                     if(isset($_GET['id2bis'])){
-                        $requete2="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id2bis']."'";
-                        $query2=mysqli_query($connexion,$requete2);
-                        // echo $requete2;
-                        $requete3="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id2bis']."'";
-                        $query3=mysqli_query($connexion,$requete3);
-                        // echo $requete3;
+                        $requeteDeleteUser="DELETE FROM utilisateurs WHERE utilisateurs.id='".$_GET['id2bis']."'";
+                        $query2=mysqli_query($connexion,$requeteDeleteUser);
+                       
+                        $requeteDeleteResaUser="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$_GET['id2bis']."'";
+                        $query3=mysqli_query($connexion,$requeteDeleteResaUser);
+
+                       header('location:admin.php');
                     }
                     
                     $connexion=mysqli_connect("Localhost","root","","camping");
@@ -378,18 +379,19 @@
 
                     $requete = "UPDATE tarif SET jour='".$_POST['jour']."',borne='".$_POST['borne']."', disco='".$_POST['disco']."', yfs='".$_POST['yfs']."'";
                     $query=mysqli_query($connexion,$requete);
-                    // echo $requete;
+                    
                     header('location:admin.php');
                 }
                
 
                 }
                 else{
-                    echo 'Cette page vous est inacessible'.'<br/>';
+                    echo '<div class="erreur">Cette page vous est inacessible</div>'.'<br/>';
                 }
 
 
             ?>
+            <?php include('footer.php'); ?>
         </main>
     </body>
 </html>

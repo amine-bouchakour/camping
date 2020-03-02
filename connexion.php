@@ -5,11 +5,11 @@
 		<link rel="stylesheet" type="text/css" href="camping.css">
 
 	</head>
-	<body>
-		<main>
-			<div>
-	 			<?php include('header.php'); ?>
-	 		</div>
+	<body id="bodyConnexion">
+		<?php include('header.php'); ?>
+		<main id="mainConnexion">
+		
+	 			
 	 		<div id="fullFormConnexion">
 	 			<div id="titreConnexion">CONNEXION</div>
 	 			<div id="formConnexion">
@@ -22,32 +22,20 @@
                     <div id="buttonConnexion">
                         <input type="submit" name="valider">
                     </div>
+                    <?php
+
+	                    include('fonctions.php');
+	                    connexion();
+	                ?>
                 </form>
 	 			
 	 		</div>
 			
 
-
-			<?php
-
-			include('fonctions.php');
-			connexion();
-			?>
+	 		<?php include('footer.php'); ?>
+			
 		</main>
 		
 	</body>
-
-
-	
-
- 
-
-
-
-
-
-
-
-
 
 </html>
