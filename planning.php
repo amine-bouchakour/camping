@@ -75,7 +75,12 @@
                             <?php
                             if(isset($_SESSION['login']) && $_SESSION['login'] == "admin")
                             {
-                                echo "<td><a href='profil.php?id=$ligne[0]'>Supprimer réservations<a></td>";
+                                echo "<td><a href='planning.php?id=$ligne[0]'>Supprimer réservations<a></td>";
+                            }
+                            if(isset($_GET['id']) and !isset($_GET['pg'])){
+                                $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
+                                $query1=mysqli_query($connexion,$requete1);
+                                ?><meta http-equiv="refresh" content="3;"/><?php
                             }
                             ?>
                             
