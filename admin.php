@@ -364,7 +364,7 @@
                         <p class="titretarif">Prix des Services</p> 
 
                         <form action="" method="POST">
-                            <label for="">Tarif Borne : </label><input class="inputtarif" type="text" name="borne" value="<?php echo $tarifborne ?>"> €/Jr<br>
+                            <label for="">Tarif Borne </label><input class="inputtarif" type="text" name="borne" value="<?php echo $tarifborne ?>"> €/Jr<br>
                             <label for="">Tarif Disco : </label><input class="inputtarif" type="text" name="disco" value="<?php echo $tarifdisco ?>"> €/Jr<br>
                             <label for="">Tarif Formule YFS : </label><input class="inputtarif" type="text" name="yfs" value="<?php echo $tarifyfs ?>"> €/Jr<br>
                             <label for="">Tarif Place : </label><input class="inputtarif" type="text" name="jour" value="<?php echo $tarifjour ?>"> €/Jr<br>
