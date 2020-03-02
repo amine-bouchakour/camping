@@ -413,7 +413,9 @@ footer a
 }
 
 .tablePlanning a{
-    color: red;
+    color: rgb(252, 67, 67);
+    font-size: x-large;
+    text-decoration: none;
 }
 
 td{

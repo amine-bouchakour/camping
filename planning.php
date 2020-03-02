@@ -88,14 +88,14 @@
                                 <td><?php echo $datefin ?></td>
                                 <td><?php echo ucfirst($emplacement) ?></td>
                                 <td><?php echo ucfirst($habitat) ?></td>
-                                <td><?php if($duree>1){ echo '<h2>'.$duree.' Jours</h2>' ;} else{echo '<h2>'.$duree.' Jour</h2>' ;} ?></td>
+                                <td><?php if($duree==1){echo '<h2>'.$duree.' Jour</h2>' ;} if($duree>1 and $duree<7){ echo '<h2>'.$duree.' Jours</h2>' ;} if($duree==7){echo '<h2>'.'1 Semaine</h2>' ;}if($duree>7){echo '<h2>'.$duree.' Jour</h2>' ;} ?></td>
                                 <td><?php if($borne=="Oui"){echo '<h3 class="oui">'.$borne.'</h3>';} else echo '<h3 class="non">'.$borne.'</h3>' ?></td>
                                 <td><?php if($disco=="Oui"){echo '<h3 class="oui">'.$disco.'</h3>';} else echo '<h3 class="non">'.$disco.'</h3>' ?></td>
                                 <td><?php if($yfs=="Oui"){echo '<h3 class="oui">'.$yfs.'</h3>';} else echo '<h3 class="non">'.$yfs.'</h3>' ?></td>
                             <?php
                             if(isset($_SESSION['login']) && $_SESSION['login'] == "admin")
                             {
-                                echo "<td><a href='planning.php?id=$ligne[0]'>Supprimer réservations<a></td>";
+                                echo "<td><a href='planning.php?id=$ligne[0]'>Supprimer la réservation<a></td>";
                             }
                             if(isset($_GET['id']) and !isset($_GET['pg'])){
                                 $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
