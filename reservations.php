@@ -12,70 +12,50 @@
 
                     if (isset($_SESSION['login']))
                     {
-                        // date_default_timezone_set('Europe/Paris');
+                       if (!empty($_GET['emplacement']) and !empty($_GET['habitat'])) 
+                       {
+                           // date_default_timezone_set('Europe/Paris');
 
-                        $connexion=mysqli_connect("Localhost","root","","camping");
-                        $requetetarif = "SELECT jour,borne,disco,yfs FROM tarif";
-                        $querytarif=mysqli_query($connexion,$requetetarif);
-                        $resultattarif=mysqli_fetch_all($querytarif);
+                            $connexion=mysqli_connect("Localhost","root","","camping");
+                            $requetetarif = "SELECT jour,borne,disco,yfs FROM tarif";
+                            $querytarif=mysqli_query($connexion,$requetetarif);
+                            $resultattarif=mysqli_fetch_all($querytarif);
 
-                        // DEFINITION TARIF PAR REQUETE BDD
-                        $tarifjour=$resultattarif[0][0];
-                        $tarifborne=$resultattarif[0][1];
-                        $tarifdisco=$resultattarif[0][2];
-                        $tarifyfs=$resultattarif[0][3];
+                            // DEFINITION TARIF PAR REQUETE BDD
+                            $tarifjour=$resultattarif[0][0];
+                            $tarifborne=$resultattarif[0][1];
+                            $tarifdisco=$resultattarif[0][2];
+                            $tarifyfs=$resultattarif[0][3];
 
-                        ?>
+                            ?>
+                            
+                            
+                            
+                            <section = id="sectionFormReservation">
+
+
+                                <form action="" method="post" id="formReservation">
+                                    <label for="">Date de début du séjour : </label>
+                                    <input type="date" name="datedebut"><br>
+                                    <label for="">Date de fin du séjour : </label>
+                                    <input type="date" name="datefin"><br>
+
+
+                                    <br>
+                                    Accès à la borne électrique (<?php echo $tarifborne; ?>€/jr)<input type="radio" name="borne" value="<?php echo $tarifborne ?>"><br>
+                                    Accès au Disco-Club “Les girelles dansantes” (<?php echo $tarifdisco; ?>€/jr)<input type="radio" name="disco" value="<?php echo $tarifdisco ?>"><br>
+                                    Accès aux activités Yoga, Frisbee et Ski Nautique (pack à <?php echo $tarifyfs; ?>€/jr)<input type="radio" name="yfs" value="<?php echo $tarifyfs ?>"><br>
+                                    <input type="submit" name="valider">
+                                </form>
+
+
+                            </section>
+                      <?php 
+                        } 
+                        else{
+                            echo '<div class="erreur">Veuillez passer par la page index pour reservé.</div>';
+                        }                      
                         
-                        
-                        
-                        <section = id="sectionFormReservation">
-                        
-                      
-                            <form action="" method="post" id="formReservation">
-                            <label for="">Date de début du séjour : </label>
-                                <input type="date" name="datedebut"><br>
-                            <label for="">Date de fin du séjour : </label>
-                                <input type="date" name="datefin"><br>
-
-                                <!-- <select type="text" name="emplacement">
-                                    <option value="" selected="selected">-- Emplacement --</option>
-                                    <option value="plage">La Plage</option>
-                                    <option value="pins">Les Pins</option>
-                                    <option value="maquis">Le Maquis</option>
-                                </select><br>
-                                <select type="text" name="habitat">
-                                    <option value="" selected="selected">-- Type d'habitat --</option>
-                                    <option value="tente">En Tente</option>
-                                    <option value="cpgcar">En Camping-car</option>
-                                </select><br> -->
-                                <!-- <select type="text" name="dureesejour">
-                                    <option value="" selected="selected">-- Nbr de jours --</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                </select> -->
-                                <br>
-                                Accès à la borne électrique (<?php echo $tarifborne; ?>€/jr)<input type="radio" name="borne" value="<?php echo $tarifborne ?>"><br>
-                                Accès au Disco-Club “Les girelles dansantes” (<?php echo $tarifdisco; ?>€/jr)<input type="radio" name="disco" value="<?php echo $tarifdisco ?>"><br>
-                                Accès aux activités Yoga, Frisbee et Ski Nautique (pack à <?php echo $tarifyfs; ?>€/jr)<input type="radio" name="yfs" value="<?php echo $tarifyfs ?>"><br>
-                                <input type="submit" name="valider">
-                            </form>
-
-
-                        </section>
-                        <?php
                     }
                     else
                     {
@@ -140,16 +120,16 @@
 
 
                             $connexion=mysqli_connect("Localhost","root","","camping");
-                            // $requetehabitat="SELECT habitat FROM reservationplace WHERE datedebut BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."' OR datefin BETWEEN '".$datedebut."' AND '".$datefin."' and emplacement='".$place."'";
-                            $requetehabitat="SELECT habitat,datedebut,datefin FROM reservationplace WHERE $datedebut BETWEEN datedebut AND datefin OR $datefin BETWEEN datedebut AND datefin AND emplacement='".$place."'";
+                           
+                           $requetehabitat="SELECT habitat,datedebut,datefin,emplacement FROM reservationplace WHERE (emplacement='".$place."' AND $datedebut BETWEEN datedebut AND datefin) OR (emplacement='".$place."' and $datefin BETWEEN datedebut AND datefin) OR (emplacement='".$place."' and datedebut BETWEEN $datedebut AND $datefin AND datefin BETWEEN $datedebut AND $datefin) OR (emplacement='".$place."' and $datedebut BETWEEN datedebut AND datefin AND $datefin BETWEEN datedebut AND datefin)";
+
                             $queryhabitat=mysqli_query($connexion,$requetehabitat);
                             
                             $resultathabitat=mysqli_fetch_all($queryhabitat);
-                            echo $requetehabitat;
+                            
                            
 
-                            var_dump($resultathabitat);
-
+                            
                             $j=count($resultathabitat);
                             $placedispo=4;
                             $i=0;
@@ -160,7 +140,7 @@
                                     {
                                         
                                         $placedispo=$placedispo - 2;
-                                        //echo $resultat[$i][0].'<br/>';
+                                        
                                         echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
                                         ++$i;
 
@@ -173,19 +153,18 @@
                                         ++$i;
                                     }
 
-                                if($placedispo==0){
-                                break;
+                                    if($placedispo==0){
+                                    break;
+                                    }
                                 }
-
-                                //    $finsejour=date("Y-m-d + '".$_POST['dureesejour']."'") ;
-                                //    echo $finsejour.'<br/>';
-                                
-                                }
-                            // echo $placedispo.'<br/>';
-
+                         
 
                             // CALCUL SOMME TOTAL DU SEJOUR
                             $duree = abs($dateFin2 - $dateDebut2)/60/60/24 ;
+                            if($duree<1)
+                            {
+                                $duree=1;
+                            }
                             $optiontotal= $option1 + $option2 + $option3;
                             $totalsejour=($optiontotal*$duree) + $duree*$tarifjour;
 
@@ -269,7 +248,7 @@
 
 
                     ?>
-
+                    <?php include('footer.php'); ?>
         </main>
     </body>
 </html>

@@ -19,12 +19,12 @@
                     $query=mysqli_query($connexion,$requete);
                     $resultat=mysqli_fetch_all($query);
 
-                    //var_dump($resultat);
+                    
 
                     if(!empty($resultat))
                     {
                         $Id=$resultat[0][9];
-                        // echo $Id;
+                        
                     }
                     $nb_reservation=count($resultat);
 
@@ -93,6 +93,7 @@
 
 
                 ?>
+                <?php include('footer.php'); ?>
         </main>
     </body>
 

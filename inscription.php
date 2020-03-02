@@ -31,6 +31,7 @@
 			include('fonctions.php');
 			inscription();
 			?>
+			<?php include('footer.php'); ?>
 		</main>
 	</body>
 </html>

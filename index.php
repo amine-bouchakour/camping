@@ -31,11 +31,11 @@
 	 				<td class="tableindex"><a href="reservations.php?emplacement=pins&amp;habitat=tente">Réserver</a></td>
 	 				<td class="tableindex"><a href="reservations.php?emplacement=maquis&amp;habitat=tente">Réserver</a></td>
 	 			</tr>
-	 		</table>;
+	 		</table>
 
 
 
-			
+			<?php include('footer.php'); ?>
 		</main>
 	</body>
 

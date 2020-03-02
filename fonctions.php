@@ -28,21 +28,21 @@ function inscription()
         
                 else
                 {
-                    echo 'Mot de passe et confirmation de mot de passe différents.'.'</br>';
+                    echo '<div class="erreur">Mot de passe et confirmation de mot de passe différents.</div>'.'</br>';
                 }
     
             }
     
             else
             {
-                echo 'Le login est déjà existant, merci de le modifier et de réessayer de nouveau.'.'<br/>';
+                echo '<div class="erreur">Le login est déjà existant, merci de le modifier et de réessayer de nouveau.</div>'.'<br/>';
             }
     
         }
     
     else
         {
-            echo 'Veuillez remplir tous les champs.'.'</br>';
+            echo '<div class="erreur">Veuillez remplir tous les champs.</div>'.'</br>';
         }
     
     }
@@ -74,7 +74,7 @@ function connexion()
 
             if($resultat==0)
             {
-                    echo 'Login inexistant'.'<br/>';
+                    echo '<div class="erreur">Login inexistant</div>'.'<br/>';
             }
 
             else
@@ -90,7 +90,7 @@ function connexion()
                     }
                     else
                     {
-                        echo 'Mot de passe incorrecte'.'<br/>';
+                        echo '<div class="erreur">Mot de passe incorrecte</div>'.'<br/>';
                     }
                 }
 

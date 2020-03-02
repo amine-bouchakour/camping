@@ -116,19 +116,18 @@
                     $requeteInfosResa="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$resultatInfosProfil['login']."' ORDER BY datedebut ASC";
                     $queryInfosResa=mysqli_query($connexion,$requeteInfosResa);
                     $resultatInfosResa=mysqli_fetch_all($queryInfosResa);
-        //var_dump($resultat);
+        
 
         // CALCUL SOMME TOTAL DEBOURSER PAR UTILISATEUR
                     $requetePrixTotal="SELECT SUM(prixtotal) FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$resultatInfosProfil['login']."'";
                     $queryPrixTotal=mysqli_query($connexion,$requetePrixTotal);
                     $resultatTotalPrix=mysqli_fetch_row($queryPrixTotal);
-        // var_dump($resultatTotalPrix);
-        // echo $requete0;
+       
 
                     $prixtotal=$resultatTotalPrix[0];
                     if(!empty($resultatInfosResa)){
                         $Id=$resultatInfosResa[0][9];
-            // echo $Id;
+            
                     }
                     $nb_reservation=count($resultatInfosResa);
 
@@ -220,6 +219,7 @@
             header('location:connexion.php');
         }
         ?>
+        <?php include('footer.php'); ?>
         </main>
     </body>
 </html>
