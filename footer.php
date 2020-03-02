@@ -34,8 +34,4 @@
 
 		</section>  
 
-
-
-	?>
-
 </footer
