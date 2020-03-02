@@ -46,7 +46,7 @@
                         $disco=ucfirst($ligne[7]);
                         $yfs=ucfirst($ligne[8]);
                         $id=$ligne[0];
-                    ?>
+                    ?> 
                         <section id="sectiontablePlanning">
 
                             <table class='tablePlanning'>
