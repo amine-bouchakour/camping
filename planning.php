@@ -100,7 +100,7 @@
                             if(isset($_GET['id']) and !isset($_GET['pg'])){
                                 $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
                                 $query1=mysqli_query($connexion,$requete1);
-                                ?><meta http-equiv="refresh" content="3;"/><?php
+                                header('location:planning.php');
                             }
                             ?>
                             

@@ -183,15 +183,16 @@
                     <br><br>
 
                 <?php 
-                    
-                }
-
-
-                if(isset($_GET['id']) and !isset($_GET['pg'])){
+                   if(isset($_GET['id']) and !isset($_GET['pg'])){
                     $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
                     $query1=mysqli_query($connexion,$requete1);
-                    ?><meta http-equiv="refresh" content="3;"/><?php
+                    header('location:profil.php');
+
+                } 
                 }
+
+
+                
 
                 ?>
                 <div id="actionUser">
@@ -208,11 +209,11 @@
                 $connexion=mysqli_connect('localhost','root','','camping');
                 $requete="DELETE FROM utilisateurs WHERE login='".$resultatInfosProfil['login']."'";
                 $query=mysqli_query($connexion,$requete);
-                echo $requete;
+                // echo $requete;
 
                 $requete1="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$Id."'";
                 $query1=mysqli_query($connexion,$requete1);
-                echo $requete1;
+                // echo $requete1;
 
                 header('location:deconnexion.php');
             }
