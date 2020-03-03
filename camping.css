@@ -381,7 +381,8 @@ footer a
 #mainprofil{
     padding-top: 10%;
     background-image: url(img/profilbackground.jpg);
-    background-size: cover;
+    background-size: cover; 
+
     
 }
 
@@ -418,6 +419,7 @@ footer a
 }
 
 #tableauReservation{
+    padding-bottom: 10%;
     margin: 0 auto ;
     width: 50%;
     text-align: center;
