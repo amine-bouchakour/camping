@@ -14,7 +14,7 @@
                 if(isset($_SESSION['login']) and $_SESSION['login']== "admin")
                 {
 
-                    echo '<p id="titreAdmin">Bienvenue admninistrateur'.'</p><br/>';
+                    echo '<p id="titreAdmin">Welcome Mr. Admninistrator'.'</p><br/>';
 
                     $connexion=mysqli_connect("Localhost","root","","camping");
                                        
@@ -38,9 +38,9 @@
 
                     ?> 
                     <div class="infoEmplacement">
-                        <p>Réservation pour les Pins</p>
+                        <p><h2>Les Pins</h2></p>
                         <p>Nb de réservations total : <?php echo count($resultatResaPins) ?></p>
-                        <p>Sommes total cumulé sur les Pins : <?php echo $resultatPrixPins[0]; ?> euros</p>
+                        <p>Somme total cumulée sur les Pins : <?php if($resultatPrixPins[0]==0){echo '0';} else echo $resultatPrixPins[0]; ?> euros</p>
 
                     </div>
                     
@@ -66,32 +66,36 @@
                                     $yfs=ucfirst($resultatPins[$j][11]);
                                     $prixtotal=number_format($resultatPins[$j][12],2);
 
+                                    setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR','fr','fr','fra','fr_FR@euro');
+                                    $datedebut=strftime('%d %B %Y',strtotime($datedebut));
+                                    $datefin=strftime('%d %B %Y',strtotime($datefin));
+                                    
                                     ?>
-                                    <table>
-                                        <th><?php echo $login ?></th>
+                                    <table class="tableadmin">
+                                        <th><h3>Pseudo : <?php echo $login ?></h3></th>
                                         <tr>
-                                            <td>Date d'entrée en camping = <?php echo $datedebut ?></td>
+                                            <td>Date d'entrée en camping : <?php echo $datedebut ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Date de sortie du camping = <?php echo $datefin?></td>
+                                            <td>Date de sortie du camping : <?php echo $datefin?></td>
                                         </tr>
                                         <tr>
-                                            <td>Type d'hébergement = <?php echo $habitat ?></td>
+                                            <td>Type d'hébergement : <?php if(isset($habitat) and $habitat=="Tente") echo $habitat; else echo 'Camping-car'?></td>
                                         </tr>
                                         <tr>
-                                            <td>Durée du séjour = <?php echo $duree."jours" ?></td>
+                                            <td>Durée du séjour : <?php echo $duree." jours" ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Accès à la borne électrique = <?php echo $borne ?></td>
+                                            <td>Accès à la borne électrique : <?php echo $borne ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Accès au Disco-Club “Les girelles dansantes” = <?php echo $disco ?></td>
+                                            <td>Accès au Disco-Club “ <i>Les girelles dansantes</i> ” : <?php echo $disco ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Accès aux activités Yoga, Frisbee et Ski Nautique = <?php echo $yfs ?></td>
+                                            <td>Accès aux activités Yoga, Frisbee et Ski Nautique : <?php echo $yfs ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Prix total TTC = <?php echo $prixtotal."Euros" ?></td>
+                                            <td><h3>Prix total TTC : <?php echo $prixtotal." Euros" ?></h3></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -148,9 +152,9 @@
 
                     ?> 
                     <div class="infoEmplacement">
-                        <p>Réservation pour la Plage</p>
+                        <p><h2>La Plage</h2></p>
                         <p>Nb de réservations total : <?php echo count($resultatResaPlage) ?></p>
-                        <p>Sommes total cumulé sur le plage : <?php echo $resultatPrixPlage[0]; ?> euros</p>
+                        <p>Somme total cumulée sur le plage : <?php if($resultatPrixPlage[0]==0){echo '0';} else echo $resultatPrixPlage[0]; ?> euros</p>
                     </div>
                     
 
@@ -178,33 +182,37 @@
                                     $disco=ucfirst($resultatPlage[$j][10]);
                                     $yfs=ucfirst($resultatPlage[$j][11]);
                                     $prixtotal=number_format($resultatPlage[$j][12],2);
+
+                                    setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR','fr','fr','fra','fr_FR@euro');
+                                    $datedebut=strftime('%d %B %Y',strtotime($datedebut));
+                                    $datefin=strftime('%d %B %Y',strtotime($datefin));
                             
                                     ?>
-                                    <table>
-                                    <th><?php echo $login ?></th>
+                                    <table class="tableadmin">
+                                    <th><h3>Pseudo : <?php echo $login ?></h3></th>
                                     <tr>
-                                        <td>Date d'entrée en camping = <?php echo $datedebut ?></td>
+                                        <td>Date d'entrée en camping : <?php echo $datedebut ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Date de sortie du camping = <?php echo $datefin ?></td>
+                                        <td>Date de sortie du camping : <?php echo $datefin ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Type d'hébergement = <?php echo $habitat ?></td>
+                                        <td>Type d'hébergement : <?php if(isset($habitat) and $habitat=="Tente") echo $habitat; else echo 'Camping-car'?></td>
                                     </tr>
                                     <tr>
-                                        <td>Durée du séjour = <?php echo $duree."jours" ?></td>
+                                        <td>Durée du séjour : <?php echo $duree." jours" ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Accès à la borne électrique = <?php echo $borne ?></td>
+                                        <td>Accès à la borne électrique : <?php echo $borne ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Accès au Disco-Club “Les girelles dansantes” = <?php echo $disco ?></td>
+                                        <td>Accès au Disco-Club “ <i>Les girelles dansantes</i> ” : <?php echo $disco ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Accès aux activités Yoga, Frisbee et Ski Nautique = <?php echo $yfs ?></td>
+                                        <td>Accès aux activités Yoga, Frisbee et Ski Nautique : <?php echo $yfs ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Prix total TTC = <?php echo $prixtotal."Euros" ?></td>
+                                    <td><h3>Prix total TTC : <?php echo $prixtotal." Euros" ?></h3></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -261,9 +269,9 @@
 
                     ?> 
                     <div class="infoEmplacement">
-                        <p>Réservation pour le Maquis</p>
+                        <p><h2>Le Maquis</h2></p>
                         <p>Nb de réservations total : <?php echo count($resultatResaMaquis) ?></p>
-                        <p>Sommes total cumulé sur le maquis : <?php echo $resultatPrixMaquis[0]; ?> euros</p>
+                        <p>Somme total cumulée sur le maquis : <?php if($resultatPrixMaquis[0]==0){echo '0';} else echo $resultatPrixMaquis[0]; ?> euros</p>
                     </div>
                     
 
@@ -287,33 +295,37 @@
                         $disco=ucfirst($resultatMaquis[$j][10]);
                         $yfs=ucfirst($resultatMaquis[$j][11]);
                         $prixtotal=number_format($resultatMaquis[$j][12],2);
+
+                        setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR','fr','fr','fra','fr_FR@euro');
+                        $datedebut=strftime('%d %B %Y',strtotime($datedebut));
+                        $datefin=strftime('%d %B %Y',strtotime($datefin));
                 
                         ?>
-                        <table>
-                            <th><?php echo $login ?></th>
+                        <table class="tableadmin">
+                            <th><h3>Pseudo : <?php echo $login ?></h3></th>
                             <tr>
-                                <td>Date d'entrée en camping = <?php echo $datedebut ?></td>
+                                <td>Date d'entrée en camping : <?php echo $datedebut ?></td>
                             </tr>
                             <tr>
-                                <td>Date de sortie du camping = <?php echo $datefin ?></td>
+                                <td>Date de sortie du camping : <?php echo $datefin ?></td>
                             </tr>
                             <tr>
-                                <td>Type d'hébergement = <?php echo $habitat ?></td>
+                                <td>Type d'hébergement : <?php if(isset($habitat) and $habitat=="Tente") echo $habitat; else echo 'Camping-car'?></td>
                             </tr>
                             <tr>
-                                <td>Durée du séjour = <?php echo $duree."jours" ?></td>
+                                <td>Durée du séjour : <?php echo $duree." jours" ?></td>
                             </tr>
                             <tr>
-                                <td>Accès à la borne électrique = <?php echo $borne ?></td>
+                                <td>Accès à la borne électrique : <?php echo $borne ?></td>
                             </tr>
                             <tr>
-                                <td>Accès au Disco-Club “Les girelles dansantes” = <?php echo $disco ?></td>
+                                <td>Accès au Disco-Club “<i>Les girelles dansantes</i>” : <?php echo $disco ?></td>
                             </tr>
                             <tr>
-                                <td>Accès aux activités Yoga, Frisbee et Ski Nautique = <?php echo $yfs ?></td>
+                                <td>Accès aux activités Yoga, Frisbee et Ski Nautique : <?php echo $yfs ?></td>
                             </tr>
                             <tr>
-                                <td>Prix total TTC = <?php echo $prixtotal."Euros" ?></td>
+                                <td><h3>Prix total TTC : <?php echo $prixtotal." Euros" ?></h3></td>
                             </tr>
                             <tr>
                                 <td>
@@ -367,7 +379,7 @@
 
                     <!-- MODIFICATION VALEUR PRIX -->
                     <section id="modifPrix">
-                        <p class="titretarif">Prix des Services</p> 
+                        <p class="titretarif">Prix des Services</p> <br>
 
                         <form action="" method="POST">
                             <label for="">Tarif Borne </label><input class="inputtarif" type="text" name="borne" value="<?php echo $tarifborne ?>"> €/Jr<br>

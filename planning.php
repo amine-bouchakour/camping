@@ -86,8 +86,8 @@
                             ?>
                                 <td><?php echo $datedebut ?></td>
                                 <td><?php echo $datefin ?></td>
-                                <td><?php echo ucfirst($emplacement) ?></td>
-                                <td><?php echo ucfirst($habitat) ?></td>
+                                <td><?php echo '<h2>'.ucfirst($emplacement).'</h2>' ?></td>
+                                <td><?php if(isset($habitat) and $habitat=="Tente") echo $habitat; else echo 'Camping-car'?></td>
                                 <td><?php if($duree==1){echo '<h2>'.$duree.' Jour</h2>' ;} if($duree>1 and $duree<7){ echo '<h2>'.$duree.' Jours</h2>' ;} if($duree==7){echo '<h2>'.'1 Semaine</h2>' ;}if($duree>7){echo '<h2>'.$duree.' Jour</h2>' ;} ?></td>
                                 <td><?php if($borne=="Oui"){echo '<h3 class="oui">'.$borne.'</h3>';} else echo '<h3 class="non">'.$borne.'</h3>' ?></td>
                                 <td><?php if($disco=="Oui"){echo '<h3 class="oui">'.$disco.'</h3>';} else echo '<h3 class="non">'.$disco.'</h3>' ?></td>
