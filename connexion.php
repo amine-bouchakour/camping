@@ -1,5 +1,4 @@
 <html>
-
 	<head>
 		<title>Connexion</title>
 		<link rel="stylesheet" type="text/css" href="camping.css">
