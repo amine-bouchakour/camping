@@ -11,7 +11,7 @@
             <?php
 
 
-                if($_SESSION['login'] == "admin")
+                if(isset($_SESSION['login']) and $_SESSION['login']== "admin")
                 {
 
                     echo '<p id="titreAdmin">Bienvenue admninistrateur'.'</p><br/>';
@@ -392,7 +392,7 @@
 
                 }
                 else{
-                    echo '<div class="erreur">Cette page vous est inacessible</div>'.'<br/>';
+                     header('location:index.php');
                 }
 
 
