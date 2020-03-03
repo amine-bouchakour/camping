@@ -32,6 +32,15 @@
 								}
 								?>
 
-		</section>  
+					</section>  
+
+					<section id="logo">
+						<a href="index.php"><img id="sardinelogo" src="img/sardine.png"></a>
+					</section>
+
+					<section id="sectionReseaux">
+						<img class="reseaux" src="img/fb.png">
+						<img class="reseaux" src="img/twitter.png">
+					</section>
 
 </footer

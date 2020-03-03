@@ -53,14 +53,14 @@
                       <?php 
                         } 
                         else{
-                            echo '<div class="erreur">Veuillez passer par la page index pour reservé.</div>';
+                            echo '<div class="erreurResa">Veuillez passer par la page index pour reservé.</div>';
                         }                      
                         
                     }
                     else
                     {
                         header("location:connexion.php");
-                        echo 'La page est inacessible si vous n\'êtes connecté.';
+                        
                     }
                     ?>
 
@@ -111,6 +111,9 @@
                             $datedebut=strftime("%G%m%d", strtotime($dated));
                             $datefin=strftime("%G%m%d", strtotime($datef));
 
+                            
+
+
                             $habitat=$_GET['habitat'];
                             $place=$_GET['emplacement'];
 
@@ -141,7 +144,7 @@
                                         
                                         $placedispo=$placedispo - 2;
                                         
-                                        echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
+                                        echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
                                         ++$i;
 
                                     }
@@ -149,7 +152,7 @@
                                     {
                                         $placedispo=$placedispo - 1;
                                         //echo $resultat[$i][0].'<br/>';
-                                        echo 'Il reste '.$placedispo.' de place disponible<br/><br/>';
+                                        echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
                                         ++$i;
                                     }
 
@@ -204,28 +207,29 @@
                                     $connexion=mysqli_connect("Localhost","root","","camping");
                                     $requetereservation="INSERT INTO reservationplace (datedebut,datefin,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$datedebut."','".$datefin."','".$place."','".$habitat."','".$duree."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['id']."') ";
                                     $queryreservation=mysqli_query($connexion,$requetereservation);
-                            
-                                    echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
-                                    echo 'Date d\'entrée en camping : '.$datedebut.'<br/>';
-                                    echo 'Lieu réservé : '.ucfirst($_GET['emplacement']).'<br/>';
-                                    echo 'Type de logement : '.ucfirst($_GET['habitat']).'<br/>';
-                                    echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
-                                    echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.'.'<br/>'.'<br/>';
-                                    echo '<a href="profil.php">Voir vos réservations</a><br/>';
 
+                                    echo '<section class="infoResaUser">';
+                                        echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
+                                        echo 'Date d\'entrée en camping : '.$formatDate.'<br/>';
+                                        echo 'Lieu réservé : '.ucfirst($_GET['emplacement']).'<br/>';
+                                        echo 'Type de logement : '.ucfirst($_GET['habitat']).'<br/>';
+                                        echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
+                                        echo 'Votre séjour vous coûtera la sommes de '.$totalsejour.'€.'.'<br/>'.'<br/>';
+                                        echo '<a href="profil.php">Voir vos réservations</a><br/>';
+                                    echo '</section>';
                                 }
                                 else
                                 {
-                                    echo 'Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_GET['emplacement']).'<br/>'.'<br/>'; 
+                                    echo '<div class="placeDispo">Il ne reste plus de place disponible à cette période et pour ce lieu : '.ucfirst($_GET['emplacement']).'<br/>'.'<br/></div>'; 
                                 }
                             }
                             else{
-                                echo 'La date de réservation ne doit pas être inférieur à votre date d\'éntrée en camping'.'<br/>';
+                                echo '<div class="placeDispo">La date de réservation ne doit pas être inférieur à votre date d\'éntrée en camping'.'<br/></div>';
                             }
 
                             }
                             else{
-                                echo 'Vous ne pouvez pas réservé à une date ultérieur à celle d\'aujourdhui'.'<br>';
+                                echo '<div class="placeDispo">Vous ne pouvez pas réservé à une date ultérieur à celle d\'aujourdhui'.'<br></div>';
                             }
 
                             
@@ -233,7 +237,7 @@
                         }
                         else
                         {
-                            echo 'Veuillez saisir les informations obligatoires'.'<br/>';
+                            echo '<div class="placeDispo">Veuillez saisir les informations obligatoires'.'<br/></div>';
                         }
 
 
