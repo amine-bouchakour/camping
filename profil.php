@@ -111,14 +111,14 @@
 
                     echo '<h1>'.'Toutes vos réservations'.'</h1><br/>';
 
-        // TOUTES LES RESERVATIONS DE L'UTILISATEUR CONNECTEE
+                    // TOUTES LES RESERVATIONS DE L'UTILISATEUR CONNECTEE
                     $connexion=mysqli_connect("localhost","root","","camping");
                     $requeteInfosResa="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$resultatInfosProfil['login']."' ORDER BY datedebut ASC";
                     $queryInfosResa=mysqli_query($connexion,$requeteInfosResa);
                     $resultatInfosResa=mysqli_fetch_all($queryInfosResa);
         
 
-        // CALCUL SOMME TOTAL DEBOURSER PAR UTILISATEUR
+                    // CALCUL SOMME TOTAL DEBOURSER PAR UTILISATEUR
                     $requetePrixTotal="SELECT SUM(prixtotal) FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$resultatInfosProfil['login']."'";
                     $queryPrixTotal=mysqli_query($connexion,$requetePrixTotal);
                     $resultatTotalPrix=mysqli_fetch_row($queryPrixTotal);
