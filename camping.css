@@ -9,6 +9,9 @@ body {
     padding: 0;
 }
 
+main{
+    padding-bottom: 10%;
+}
 
 
 /*-----------------------HEADER / FOOTER-------------------*/
@@ -71,7 +74,8 @@ header a
 footer{
     background-image: url(img/footer.jpg);
     background-repeat: no-repeat;
- 
+    background-size: 100% auto;
+    height: 148px;
     position: absolute;
     bottom: 0 ;
     display: flex;
@@ -84,15 +88,15 @@ footer a
 {
     text-decoration: none;
     font-family: 'Roboto';
-    color: white;
+    color: black;
 }
 
 #footermenu{
     text-align: center;
     width: 20%;
-    height: 200px;
+    height: 148px;
     font-size: 25px;
-    background-color: rgb(156, 156, 156);
+   
     font-family: 'Roboto';
     border-top: 1.5px solid black;
     border-bottom: 1.5px solid black;
@@ -144,9 +148,6 @@ footer a
 
 }
 
-#mainindex{
-    
-}
 
 
 #titreIndex{
@@ -195,8 +196,6 @@ footer a
     background-image: url("img/inscription.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    
 
 }
 
@@ -318,7 +317,7 @@ footer a
     background-image: url(img/resa.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    
+   
     
     
 }
@@ -363,6 +362,7 @@ footer a
     background-color: rgb(0, 0, 0, 0.5);
     font-size: 30px ;
     margin-top: 5%;
+    margin-bottom: 10%;
 }
 
 
@@ -394,11 +394,10 @@ footer a
     text-align: center;
     color: white;
     background-color: rgb(232, 13, 12, 0.5);
+    border : 2px black thick double;
 }
 
-#titreprofil{
 
-}
 
 .infoprofil{
     padding : 3%;
@@ -418,25 +417,32 @@ footer a
     color: white ;
 }
 
-#tableauReservation{
+#tableauReservationProfil{
     padding-bottom: 10%;
     margin: 0 auto ;
     width: 50%;
     text-align: center;
-    background-color: white ;
     color: black;
 }
 
-#tableReservation{
-    border-collapse: collapse;
+#backprofil{
+    font-size: 1vw;
 
+    background-color: rgb(253, 228, 82) ;
 }
 
-#tableReservation tr, td {
+#tableReservationProfil td {
     border-style: solid;
+    width: 13%;
+    background-color: white ;
+
 }
 
-#actionUser{
+
+#tableReservationProfil tr {
+    border-style: solid;
+    width: 13%;
+    background-color: white ;
 
 }
 
@@ -455,6 +461,7 @@ footer a
     background-image: url(img/backplanning.jpg);
     background-color: black;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 #titrePlanning{
@@ -470,19 +477,21 @@ footer a
 .tablePlanning{
     width: 70%;
     margin: 0 auto 1%;
-    background-image:linear-gradient( rgba(105, 120, 58, 0.856),rgb(47, 110, 134));
     border-collapse: collapse;
-    border-style: solid;
-    border:2px rgb(0, 0, 0) solid;
+   
+   
     color :#ffffff;
+    background-image:linear-gradient( rgba(105, 120, 58, 0.856),rgb(47, 110, 134));
     font-size: 0.8vw;
     font-weight: bold;
     border-radius: 3em;
+    
+
 }
 
 .tablePlanning a{
     color: rgb(252, 67, 67);
-    font-size: x-large;
+    font-size: large;
     text-decoration: none;
 }
 
@@ -501,8 +510,6 @@ footer a
     color: rgb(88, 43, 131);
     font-size:x-large;
 }
-
-
 
 
 

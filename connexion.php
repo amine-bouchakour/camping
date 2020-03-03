@@ -1,5 +1,4 @@
 <html>
-
 	<head>
 		<title>Connexion</title>
 		<link rel="stylesheet" type="text/css" href="camping.css">
@@ -34,9 +33,9 @@
 	 		</div>
 			
 
-	 		<?php include('footer.php'); ?>
-			
+			 
 		</main>
+		<?php include('footer.php'); ?>
 		
 	</body>
 

@@ -2,6 +2,10 @@
 
 function inscription()
 {
+
+if(!isset($_SESSION['login'])){
+
+
     if(isset($_POST['valider']))
     {
     
@@ -46,6 +50,9 @@ function inscription()
         }
     
     }
+}
+else{ header('location:index.php');}
+
 
 
 }
@@ -56,9 +63,12 @@ function inscription()
 
 
 
+
 function connexion()
 
 {
+if(!isset($_SESSION['login'])){
+    
 
     if(isset($_POST['valider']))
     {
@@ -100,8 +110,9 @@ function connexion()
     }
 
 }
+else{ header('location:index.php');}
 
-
+}
 
 
 

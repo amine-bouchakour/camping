@@ -49,6 +49,9 @@
                         </div>
 
                     </form>
+                    <br>
+                    <a href="profil.php?supp=true"><h3>Supprimer mon compte</h3></a>
+
                     <?php 
 
      
@@ -111,14 +114,14 @@
 
                     echo '<h1>'.'Toutes vos réservations'.'</h1><br/>';
 
-        // TOUTES LES RESERVATIONS DE L'UTILISATEUR CONNECTEE
+                    // TOUTES LES RESERVATIONS DE L'UTILISATEUR CONNECTEE
                     $connexion=mysqli_connect("localhost","root","","camping");
                     $requeteInfosResa="SELECT * FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$resultatInfosProfil['login']."' ORDER BY datedebut ASC";
                     $queryInfosResa=mysqli_query($connexion,$requeteInfosResa);
                     $resultatInfosResa=mysqli_fetch_all($queryInfosResa);
         
 
-        // CALCUL SOMME TOTAL DEBOURSER PAR UTILISATEUR
+                    // CALCUL SOMME TOTAL DEBOURSER PAR UTILISATEUR
                     $requetePrixTotal="SELECT SUM(prixtotal) FROM reservationplace INNER JOIN utilisateurs ON reservationplace.id_utilisateur=utilisateurs.Id WHERE login='".$resultatInfosProfil['login']."'";
                     $queryPrixTotal=mysqli_query($connexion,$requetePrixTotal);
                     $resultatTotalPrix=mysqli_fetch_row($queryPrixTotal);
@@ -131,13 +134,13 @@
                     }
                     $nb_reservation=count($resultatInfosResa);
 
-                    echo '<p>Réservation fait par = '.ucfirst($resultatInfosProfil['login']).'<br/>
-                    Nombre de réservation total = '.$nb_reservation.'</br>
-                    Dépense total = '.$prixtotal.' euros</p>';
+                    echo '<p>Réservation fait par : '.ucfirst($resultatInfosProfil['login']).'<br/>
+                    Nombre de réservation total : '.$nb_reservation.'</br>
+                    Dépense total : '.$prixtotal.' euros</p>';
                 ?>
             </section>
 
-            <section id="tableauReservation">
+            <section id="tableauReservationProfil">
                 <?php
 
                 $j=0;
@@ -154,7 +157,8 @@
                     $yfs=ucfirst($ligne[8]);
                     $id=$ligne[0];
                     ?>
-                    <table id="tableReservation">
+                    <section id="backprofil">
+                    <table id="tableReservationProfil">
                         <thead>
                             <td>Date Debut</td>
                             <td>Date Fin</td>
@@ -178,22 +182,24 @@
                             <td><a href='profil.php?id=<?php echo $ligne[0]?>'>Supprimer réservations<a></td>
                             </tr>
                     </table>
+                    </section>
+                    <br><br>
 
                 <?php 
-                    
-                }
-
-
-                if(isset($_GET['id']) and !isset($_GET['pg'])){
+                   if(isset($_GET['id']) and !isset($_GET['pg'])){
                     $requete1="DELETE FROM reservationplace WHERE id='".$_GET['id']."'";
                     $query1=mysqli_query($connexion,$requete1);
-                    ?><meta http-equiv="refresh" content="3;"/><?php
+                    header('location:profil.php');
+
+                } 
                 }
+
+
+                
 
                 ?>
                 <div id="actionUser">
                     <a href="index.php"><h3>Faire une nouvelle réservation</h3></a>
-                    <a href="profil.php?supp=true"><h3>Supprimer mon compte</h3></a>
                 </div>
 
             
@@ -205,11 +211,11 @@
                 $connexion=mysqli_connect('localhost','root','','camping');
                 $requete="DELETE FROM utilisateurs WHERE login='".$resultatInfosProfil['login']."'";
                 $query=mysqli_query($connexion,$requete);
-                echo $requete;
+                // echo $requete;
 
                 $requete1="DELETE FROM reservationplace WHERE reservationplace.id_utilisateur='".$Id."'";
                 $query1=mysqli_query($connexion,$requete1);
-                echo $requete1;
+                // echo $requete1;
 
                 header('location:deconnexion.php');
             }
@@ -219,9 +225,8 @@
             header('location:connexion.php');
         }
         ?>
-        <?php include('footer.php'); ?>
         </main>
+        <?php include('footer.php'); ?>
     </body>
 </html>
-
 

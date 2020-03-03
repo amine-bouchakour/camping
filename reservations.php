@@ -144,7 +144,7 @@
                                         
                                         $placedispo=$placedispo - 2;
                                         
-                                        echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
+                                        //echo '<div class="placeDispo">Il reste '.$placedispo.' place disponible<br/><br/></div>';
                                         ++$i;
 
                                     }
@@ -152,7 +152,7 @@
                                     {
                                         $placedispo=$placedispo - 1;
                                         //echo $resultat[$i][0].'<br/>';
-                                        echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
+                                        //echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
                                         ++$i;
                                     }
 
@@ -210,7 +210,7 @@
 
                                     echo '<section class="infoResaUser">';
                                         echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
-                                        echo 'Date d\'entrée en camping : '.$formatDate.'<br/>';
+                                        echo 'Date d\'entrée en camping : '.$dated.'<br/>';
                                         echo 'Lieu réservé : '.ucfirst($_GET['emplacement']).'<br/>';
                                         echo 'Type de logement : '.ucfirst($_GET['habitat']).'<br/>';
                                         echo 'Votre séjour est d\'une durée de '.$duree.' jours.'.'<br/>';
@@ -252,7 +252,7 @@
 
 
                     ?>
-                    <?php include('footer.php'); ?>
         </main>
+        <?php include('footer.php'); ?>
     </body>
 </html>

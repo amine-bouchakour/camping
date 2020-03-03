@@ -43,4 +43,4 @@
 						<img class="reseaux" src="img/twitter.png">
 					</section>
 
-</footer
+							</footer>
