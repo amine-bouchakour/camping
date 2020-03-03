@@ -49,6 +49,9 @@
                         </div>
 
                     </form>
+                    <br>
+                    <a href="profil.php?supp=true"><h3>Supprimer mon compte</h3></a>
+
                     <?php 
 
      
@@ -197,7 +200,6 @@
                 ?>
                 <div id="actionUser">
                     <a href="index.php"><h3>Faire une nouvelle réservation</h3></a>
-                    <a href="profil.php?supp=true"><h3>Supprimer mon compte</h3></a>
                 </div>
 
             
