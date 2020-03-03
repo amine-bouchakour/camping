@@ -1,7 +1,17 @@
-body{
-    margin: 0;
+html {
+    height: 100%;
 }
 
+body {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    padding-bottom: 10%;
+}
 
 
 /*-----------------------HEADER / FOOTER-------------------*/
@@ -18,6 +28,7 @@ header{
     width: 100%;
     margin: 0;
     padding: 0;
+    top: 0 ;
 }
 
 #topofheader{
@@ -60,6 +71,18 @@ header a
     background-color: rgba( 238, 238, 238, 0.281);
 }
 
+footer{
+    background-image: url(img/footer.jpg);
+    background-repeat: no-repeat;
+ 
+    position: fixed;
+    bottom: 0 ;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: blue;
+}
+
 footer a
 {
     text-decoration: none;
@@ -68,25 +91,36 @@ footer a
 }
 
 #footermenu{
-    width: 100%;
-    position: absolute;
-    bottom: 0 ;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    text-align: center;
+    width: 20%;
+    height: 200px;
     font-size: 25px;
     background-color: rgb(156, 156, 156);
     font-family: 'Roboto';
     border-top: 1.5px solid black;
     border-bottom: 1.5px solid black;
-    position: fixed;
-    bottom: 0;
+    
 }
 
 #footermenu a:hover{
     background-color: rgba( 238, 238, 238, 0.281);
 }
 
+#logo{
+    margin-left: 5%;
+    width: 20%;
+}
+
+#sectionReseaux{
+    width: 20%;
+}
+
+
+.reseaux{
+    width: 20%;
+}
+
+
 
 
 
@@ -105,13 +139,16 @@ footer a
 /*-----------------------INDEX-------------------*/
 
 
+#bodyindex{
+    background-image: url(img/index.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 10%;
 
+}
 
 #mainindex{
-    background-image: url(img/indexbackground.jpg);
-    background-size: cover;
-    height: 870px;
-    padding-top: 10%;
+    
 }
 
 
@@ -129,24 +166,20 @@ footer a
 }
 
 
-#tableReservation{
-    margin-top: 5%;
-    padding-top: 10%;
-    
-}
-
 
 .tableindex{
-    
     font-size: 2vw;
-    margin:0 auto;
     margin-top: 10%;
     padding:15px;
-    margin-top: 5%;
     text-align: center;
     border: 4px black solid;
     border-radius: 1em;
-    background-color: rgba(113, 88, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.tableindex a {
+    color: white ;
 }
 
 
@@ -160,22 +193,25 @@ footer a
 /*-----------------------INSCRIPTION-------------------*/
 /*-----------------------INSCRIPTION-------------------*/
 
-#mainInscription{
+#bodyInscription{
     padding-top: 10%;
-    background-image: url("img/backgroundinscription.jpg");
+    background-image: url("img/inscription.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
-     height: 870px;
+    background-position: center;
+    
 
 }
 
 #fullFormInscription{
-    width: 50% ;
+    
     height: 300px ;
     margin: 0 auto ;
     margin-top: 5% ;
     padding-top: 3% ;
     background-color: rgb(0, 0, 0, 0.5);
     text-align: center;
+    border : 10px solid white   ;
 }
 
 #titreInscription{
@@ -220,21 +256,21 @@ footer a
 /*-----------------------CONNEXION-------------------*/
 /*-----------------------CONNEXION-------------------*/
 
-#mainConnexion{
-    padding-top: 10%;
-     height: 870px;
-    background-image: url(img/connexionback.jpg);
+#bodyConnexion{
+    background-image: url(img/connexion.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 10%;
 }
 
 #fullFormConnexion{
-    width: 50% ;
-    height: 300px ;
+   height: 300px ;
     margin: 0 auto ;
     margin-top: 5% ;
     padding-top: 3% ;
     background-color: rgb(0, 0, 0, 0.5);
     text-align: center;
+    border : 10px solid white   ;
 }
 
 #titreConnexion{
@@ -246,6 +282,8 @@ footer a
 }
 
 #formConnexion{
+    font-size: 20px;
+    
     width: 50% ;
     margin: 0 auto ;
     color: red ;
@@ -280,23 +318,57 @@ footer a
 
 #mainReservation{
     padding-top : 10% ;
-    background-image: url(img/resabackground.jpg);
+    background-image: url(img/resa.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
-     height: 870px;
+    
+    
     
 }
 
 #sectionFormReservation{
-    background-color: red;
+    background-color: rgb(0, 0, 0, 0.5);
+    border : 10px solid white ;
+    height: 300px;
+    padding: 3%;
 }
 
 #formReservation{
     width: 50%;
     margin : 0 auto;
-    background-color: blue;
-    padding: 2%;
+    background-color: rgb(255, 255, 255, 0.5);
+    padding: 3%;
     text-align: center;
 }
+
+.erreurResa{
+    margin: 0 auto;
+    background-color: rgb(0, 0, 0, 0.5);
+    color: white ;
+    font-size: 30px ;
+    margin-top: 5%;
+}
+
+.placeDispo{
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(0, 0, 0, 0.5); 
+    color: white;
+    font-size: 30px ;
+    margin-top: 5%;
+}
+
+.infoResaUser{
+    width: 50%;
+    text-align: center;
+    margin: 0 auto ;
+    color: white ;
+    background-color: rgb(0, 0, 0, 0.5);
+    font-size: 30px ;
+    margin-top: 5%;
+}
+
+
 
 
 /*-----------------------PROFIL-------------------*/
@@ -312,8 +384,9 @@ footer a
 #mainprofil{
     padding-top: 10%;
     background-image: url(img/profilbackground.jpg);
-    background-size: cover;
-     height: 870px;
+    background-size: cover; 
+
+    
 }
 
 
@@ -326,9 +399,7 @@ footer a
     background-color: rgb(232, 13, 12, 0.5);
 }
 
-#titreprofil{
 
-}
 
 .infoprofil{
     padding : 3%;
@@ -348,24 +419,32 @@ footer a
     color: white ;
 }
 
-#tableauReservation{
+#tableauReservationProfil{
+    padding-bottom: 10%;
     margin: 0 auto ;
     width: 50%;
     text-align: center;
-    background-color: white ;
     color: black;
 }
 
-#tableReservation{
-    border-collapse: collapse;
+#backprofil{
+    font-size: 1vw;
 
+    background-color: rgb(253, 228, 82) ;
 }
 
-#tableReservation tr, td {
+#tableReservationProfil td {
     border-style: solid;
+    width: 13%;
+    background-color: white ;
+
 }
 
-#actionUser{
+
+#tableReservationProfil tr {
+    border-style: solid;
+    width: 13%;
+    background-color: white ;
 
 }
 
@@ -379,13 +458,12 @@ footer a
 /*-----------------------Planning-------------------*/
 /*-----------------------Planning-------------------*/
 
-#mainPlanning{
+#bodyPlanning{
     padding-top: 10%;
     background-image: url(img/backplanning.jpg);
+    background-color: black;
     background-size: cover;
-     height: 100%
-
-     
+    background-attachment: fixed;
 }
 
 #titrePlanning{
@@ -396,34 +474,35 @@ footer a
     background-color: rgb(0, 0, 0);
     border-radius: 2em;
     border: 3px white solid;
-
 }
 
 .tablePlanning{
     width: 70%;
     margin: 0 auto 1%;
-    background-image:linear-gradient( rgba(105, 120, 58, 0.856),rgb(47, 110, 134));
     border-collapse: collapse;
-    border-style: solid;
-    border:2px rgb(0, 0, 0) solid;
+   
+   
     color :#ffffff;
+    background-image:linear-gradient( rgba(105, 120, 58, 0.856),rgb(47, 110, 134));
     font-size: 0.8vw;
     font-weight: bold;
-    border-radius: 2em;
+    border-radius: 3em;
+    
+
 }
 
 .tablePlanning a{
     color: rgb(252, 67, 67);
-    font-size: x-large;
+    font-size: large;
     text-decoration: none;
 }
 
-td{
-    padding:1%;
+.tablePlanning td {
+    width: 10%;
+    padding: 1%;
     text-align: center;
 }
 
-/* AFFICHAGE REPONSE OPTION CAMPING */
 .oui{
     color: rgb(255, 145, 0);
     font-size:x-large;
@@ -435,6 +514,7 @@ td{
 }
 
 
+
 /*-----------------------Admin-------------------*/
 /*-----------------------Admin-------------------*/
 /*-----------------------Admin-------------------*/
@@ -444,11 +524,11 @@ td{
 /*-----------------------Admin-------------------*/
 /*-----------------------Admin-------------------*/
 
-#mainAdmin{
+#bodyAdmin{
     padding-top: 10%;
     background-image: url(img/adminbackground.jpg);
     background-size: cover ;
-     height: 870px;
+     
 }
 
 #titreAdmin{
@@ -468,7 +548,7 @@ td{
     border: 10px black solid;
     border-radius: 2em 0em 0em 2em;
     background-color: bisque;
-    overflow-y: auto;   
+    overflow-y: auto;    
 }
 
 
@@ -483,7 +563,8 @@ td{
 
 #modifPrix{
     padding: 1%;
-    margin: 0 auto 8%;
+    margin: 0 auto;
+    padding-bottom: 2%;
     width: 50%;
     text-align: center;
     background-image:linear-gradient( rgba(255, 208, 80, 0.719),rgb(255, 255, 255),rgba(255, 217, 0, 0.486));
@@ -491,14 +572,6 @@ td{
     border-radius: 2em;
     font-size: 2vw;
     border:10px rgb(255, 158, 79) solid;
-}
-
-
-
-
-table{
-   text-align: center;
-   margin: auto;
 }
 
 .titretarif{
@@ -528,8 +601,14 @@ table{
 }
 
 
+
+
+
+
+
 .erreur{
-     margin: 0 auto ;
+
+    margin: 0 auto ;
     width: 50%;
     text-align: center;
     background-color: rgb(0, 0, 0, 0.5);

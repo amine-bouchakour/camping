@@ -131,13 +131,13 @@
                     }
                     $nb_reservation=count($resultatInfosResa);
 
-                    echo '<p>Réservation fait par = '.ucfirst($resultatInfosProfil['login']).'<br/>
-                    Nombre de réservation total = '.$nb_reservation.'</br>
-                    Dépense total = '.$prixtotal.' euros</p>';
+                    echo '<p>Réservation fait par : '.ucfirst($resultatInfosProfil['login']).'<br/>
+                    Nombre de réservation total : '.$nb_reservation.'</br>
+                    Dépense total : '.$prixtotal.' euros</p>';
                 ?>
             </section>
 
-            <section id="tableauReservation">
+            <section id="tableauReservationProfil">
                 <?php
 
                 $j=0;
@@ -154,7 +154,8 @@
                     $yfs=ucfirst($ligne[8]);
                     $id=$ligne[0];
                     ?>
-                    <table id="tableReservation">
+                    <section id="backprofil">
+                    <table id="tableReservationProfil">
                         <thead>
                             <td>Date Debut</td>
                             <td>Date Fin</td>
@@ -178,6 +179,8 @@
                             <td><a href='profil.php?id=<?php echo $ligne[0]?>'>Supprimer réservations<a></td>
                             </tr>
                     </table>
+                    </section>
+                    <br><br>
 
                 <?php 
                     
@@ -219,8 +222,8 @@
             header('location:connexion.php');
         }
         ?>
-        <?php include('footer.php'); ?>
         </main>
+        <?php include('footer.php'); ?>
     </body>
 </html>
 

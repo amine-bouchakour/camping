@@ -11,17 +11,19 @@
 		
 	 			
 	 		<div id="fullFormConnexion">
-	 			<div id="titreConnexion">CONNEXION</div>
+	 			<div id="titreConnexion">CONNEXION</div><br />
 	 			<div id="formConnexion">
 	 				<form action="" method="post"><br />
 
 		 				Login : <br /><input type="text" name="login"><br />
 		 				Password : <br /><input type="password" name="password"><br />
+		 				
 	 				
                     </div>
                     <div id="buttonConnexion">
-                        <input type="submit" name="valider">
+                    	<input  type="submit" name="valider">
                     </div>
+                    
                     <?php
 
 	                    include('fonctions.php');
@@ -32,9 +34,9 @@
 	 		</div>
 			
 
-	 		<?php include('footer.php'); ?>
-			
+			 
 		</main>
+		<?php include('footer.php'); ?>
 		
 	</body>
 

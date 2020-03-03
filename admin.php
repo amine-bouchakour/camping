@@ -226,10 +226,9 @@
                     // SUPPRESSION RESERVATION
                     if(isset($_GET['id1'])){
                         $requeteDeleteResa="DELETE FROM reservationplace WHERE id='".$_GET['id1']."'";
-
                         $query1=mysqli_query($connexion,$requeteDeleteResa);
                         
-                        header('location:admin.php');
+                        // header('location:admin.php');
                     }
                     // SUPPRESSION COMPTE ET RESERVATION
                     if(isset($_GET['id1bis'])){
@@ -391,7 +390,7 @@
 
 
             ?>
-            <?php include('footer.php'); ?>
         </main>
+        <?php include('footer.php'); ?>
     </body>
 </html>

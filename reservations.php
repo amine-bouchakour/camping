@@ -248,7 +248,7 @@
 
 
                     ?>
-                    <?php include('footer.php'); ?>
         </main>
+        <?php include('footer.php'); ?>
     </body>
 </html>
