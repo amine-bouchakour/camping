@@ -413,6 +413,14 @@ p{
 /*-----------------------PROFIL-------------------*/
 /*-----------------------PROFIL-------------------*/
 
+#bodyprofil{
+    background-image: linear-gradient(rgba(0, 128, 0, 0.87), rgba(0, 195, 255, 0.822),rgba(0, 132, 255, 0.726));
+    padding-top: 10%;
+    height: auto;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
 .h3{
     font-size: xx-large;
@@ -430,7 +438,7 @@ p{
 }
 
 #mainprofil{
-    padding-top: 10%;
+    padding-top: 5%;
     background-image: url(img/profilbackground.jpg);
     background-size: cover; 
     border-radius: 2em;
@@ -469,7 +477,7 @@ box-shadow: 5px 5px 15px 5px #000000;
     font-size: 1.5vw;
     width: 30%;
     text-align: center;
-    background-color: rgba(80, 40, 40, 0.5); ;
+    background-image:linear-gradient( rgba(255, 255, 255, 0.671),rgba(121, 23, 23, 0.541)) ;
     color: white ;
     border-radius: 2em;
     box-shadow: 5px 5px 15px 5px #000000;
@@ -478,14 +486,14 @@ box-shadow: 5px 5px 15px 5px #000000;
 
 #tableauReservationProfil{
     padding-bottom: 10%;
-    margin: 0 auto ;
+    margin: 5% auto ;
+    padding:2% 0%;
     width: 80%;
     height: auto;
     text-align: center;
     color: black;
     border-radius: 2em;
-    background-image: linear-gradient( rgba(189, 253, 169, 0.746),rgba(2, 109, 2, 0.61)) ;
-
+    background-image: linear-gradient( rgba(189, 253, 169, 0.548),rgba(2, 109, 2, 0.514)) ;
     box-shadow: 5px 5px 15px 5px #000000;
 
 }
