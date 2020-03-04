@@ -39,8 +39,8 @@
 					</section>
 
 					<section id="sectionReseaux">
-						<img class="reseaux" src="img/fb.png">
-						<img class="reseaux" src="img/twitter.png">
+					<a href="">	<img class="reseaux" src="img/fb.png"></a>
+					<a href=""><img class="reseaux" src="img/twitter.png"></a>
 					</section>
 
 							</footer>
