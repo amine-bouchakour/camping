@@ -223,17 +223,18 @@ a{
 /*-----------------------INSCRIPTION-------------------*/
 
 #bodyInscription{
-    padding-top: 10%;
+    text-align: center;
+    /* padding-top: 10%; */
     background-image: url("img/inscription.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    /* height: auto; */
     
 
 }
 
 #fullFormInscription{
-    
     height: 300px ;
     margin: 0 auto ;
     margin-top: 5% ;
@@ -273,6 +274,10 @@ a{
     
 }
 
+#maininscription{
+    width: 100%;
+    height: 0%;
+}
 
 
 
@@ -286,6 +291,7 @@ a{
 /*-----------------------CONNEXION-------------------*/
 
 #bodyConnexion{
+    text-align: center;
     background-image: url(img/connexion.jpg);
     background-repeat: no-repeat;
     background-size: cover;
