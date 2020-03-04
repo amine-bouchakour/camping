@@ -577,11 +577,18 @@ p{
 /*-----------------------Admin-------------------*/
 /*-----------------------Admin-------------------*/
 
-#bodyAdmin{
+
+
+html {
+    height: 100%;
+}
+#bodyAdmin {
     padding-top: 10%;
-    background-image: url(img/adminbackground.jpg);
-    background-size: cover ;
-     
+    background-image: linear-gradient(yellow,orange);
+    height: auto;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #titreAdmin{
@@ -599,7 +606,7 @@ p{
     height: 400px;
     border: 10px black solid;
     border-radius: 2em 0em 0em 2em;
-    background-color: bisque;
+    background-color: rgba(109, 71, 25, 0.39);
     overflow-y: auto;    
 }
 
@@ -607,10 +614,12 @@ p{
     padding: 1%;
     font-size: 1vw;
     margin: 10px auto 30px;
-    background-color: rgb(251, 159, 39);
+    background-color: rgba(251, 159, 39, 0.733);
     text-align: left;
     border: 2px black solid;
     border-radius: 1em;
+box-shadow: 5px 5px 15px 5px #000000;
+
 }
 
 .infoEmplacement{
@@ -623,6 +632,9 @@ p{
     color: white;
     border-radius: 2em;
     border: 4px black solid;
+text-shadow: 3px 5px 2px #000000;
+box-shadow: 5px 5px 15px 5px #000000;
+
 
 }
 
@@ -637,6 +649,8 @@ p{
     border-radius: 2em;
     font-size: 2vw;
     border:10px rgb(255, 158, 79) solid;
+box-shadow: 5px 5px 15px 5px #000000;
+
 }
 
 .titretarif{
@@ -644,6 +658,7 @@ p{
     color: gold;
     background-color: indianred;
     border-radius: 0.5em;
+    
 }
 
 .inputtarif{
@@ -655,6 +670,7 @@ p{
    text-align: center;
    border-radius: 0.5em;
 
+
 }
 
 .inputtarifv{
@@ -663,6 +679,7 @@ p{
     width: auto;
     font-size: xx-large;
     border-radius: 2em;
+
 }
 
 
