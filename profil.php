@@ -90,10 +90,10 @@
                             <td>Lieu</td>
                             <td>Type d'habitat</td>
                             <td>Durée du séjour</td>
-                            <td>Option borne electrique</td>
+                            <td>Option borne électrique</td>
                             <td>Option Acces Discothèque</td>
                             <td>Option Formule YFS</td>
-                            <td>Prix total séjour</td>
+                            <td>Prix</td>
                             <td>Réservations</td>
                         </thead>
                         <tr>
