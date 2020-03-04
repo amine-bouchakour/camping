@@ -23,14 +23,14 @@
 					</div>
 						
 				</form>
-			</div>
-
-
 			<?php
 
 			include('fonctions.php');
 			inscription();
 			?>
+			</div>
+
+
 		</main>
 		<?php include('footer.php'); ?>
 	</body>
