@@ -72,6 +72,7 @@ header a
 }
 footer{
     background-image: url(img/footer.jpg);
+    opacity: 0.8;
     font-size: cover;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -110,7 +111,7 @@ footer a
 }
 
 #sectionReseaux{
-    width: 18%;
+    width: 20%;
     margin:0 2% 0 0;
 }
 
