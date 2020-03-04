@@ -134,11 +134,14 @@ footer a
 
 
 #bodyindex{
-    height: 100%;
+    text-align: center;
     background-image: url(img/index.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     padding-top: 10%;
+    height: auto;
+    margin: 0;
 
 }
 
@@ -414,6 +417,8 @@ p{
 /*-----------------------PROFIL-------------------*/
 
 #bodyprofil{
+    text-align: center;
+
     background-image: linear-gradient(rgba(0, 128, 0, 0.87), rgba(0, 195, 255, 0.822),rgba(0, 132, 255, 0.726));
     padding-top: 10%;
     height: auto;
@@ -544,9 +549,10 @@ border-radius: 2em;
 /*-----------------------Planning-------------------*/
 
 #bodyPlanning{
+    text-align: center;
+
     padding-top: 10%;
     background-image: url(img/backplanning.jpg);
-    background-color: black;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -615,6 +621,8 @@ html {
     height: 100%;
 }
 #bodyAdmin {
+    text-align: center;
+
     padding-top: 10%;
     background-image: linear-gradient(yellow,orange);
     height: auto;
