@@ -8,7 +8,13 @@
 		<?php include('header.php'); ?>
 		<main id="mainindex">
 	 		
-	 		
+			 <p><h1 class="textintrotitre">Bienvenue au Camping "<i> Les Happy Sardines </i>" !! <h1>
+		<h2 class="textintro">Besoin de vacances ? besoins d'aventures ? <br>
+		Vous êtes au bon endroit ! 
+		Les Pins, le Maquis ou encore la Plage... En camping-car ou en tente ? <br>
+		C'est selon votre bon vouloir ! <br> Des activités ? des moments détentes ou découvertes ? <br>
+		Vous êtes au bon endroit !
+			</h2></p>
 
 
 	 		<table class="tableindex">

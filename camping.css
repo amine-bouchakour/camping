@@ -33,7 +33,7 @@ header{
 
 #topofheader{
     height: 100px;
-    background-color: orange;
+    background-color: rgb(253, 179, 40);
     display: flex;
     flex-direction: row;
     padding-bottom: 10px;
@@ -54,7 +54,7 @@ header{
     flex-direction: row;
     justify-content: space-around;
     font-size: 25px;
-    background-color: rgb(156, 156, 156);
+    background-color: rgba(255, 135, 79, 0.87);
     font-family: 'Roboto';
     border-top: 1.5px solid black;
     border-bottom: 1.5px solid black;
@@ -70,12 +70,13 @@ header a
 #headermenu a:hover{
     background-color: rgba( 238, 238, 238, 0.281);
 }
-
 footer{
     background-image: url(img/footer.jpg);
+    opacity: 0.8;
+    font-size: cover;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    height: 148px;
+    height: 100px;
     position: absolute;
     bottom: 0 ;
     display: flex;
@@ -94,12 +95,9 @@ footer a
 #footermenu{
     text-align: center;
     width: 20%;
-    height: 148px;
-    font-size: 25px;
-   
+    height: auto;
+    font-size:17px;
     font-family: 'Roboto';
-    border-top: 1.5px solid black;
-    border-bottom: 1.5px solid black;
     
 }
 
@@ -114,18 +112,13 @@ footer a
 
 #sectionReseaux{
     width: 20%;
+    margin:0 2% 0 0;
 }
 
 
 .reseaux{
     width: 20%;
 }
-
-
-
-
-
-
 
 
 
@@ -141,13 +134,20 @@ footer a
 
 
 #bodyindex{
+    text-align: center;
     background-image: url(img/index.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     padding-top: 10%;
+    height: auto;
+    margin: 0;
 
 }
 
+#mainindex{
+    
+}
 
 
 #titreIndex{
@@ -166,20 +166,51 @@ footer a
 
 
 .tableindex{
-    font-size: 2vw;
-    margin-top: 10%;
+    font-size: 2.5vw;
+    margin: 2% auto 5%;
     padding:15px;
     text-align: center;
     border: 4px black solid;
     border-radius: 1em;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 179, 37, 0.521);
     color: white;
+    box-shadow: 3px 3px 13px 3px #ffef5d;
+
 }
 
 .tableindex a {
     color: white ;
 }
 
+.textintrotitre{
+    padding: 1% 2%;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    color:rgb(0, 0, 0);
+    background-color: rgba(245, 222, 179, 0.767);
+    font-family: cursive;
+    font-weight: bold;
+    border-radius: 1em;
+}
+
+.textintro{
+    /* margin:1% 0 0; */
+    padding: 1% 2%;
+    width: 50%;
+    margin:0 auto;
+    text-align: center;
+    color:rgb(0, 0, 0);
+    background-color: rgba(245, 222, 179, 0.753);
+    font-family: cursive;
+    border-radius: 1em;
+
+}
+
+
+a{
+    text-decoration: none;
+}
 
 
 /*-----------------------INSCRIPTION-------------------*/
@@ -196,6 +227,8 @@ footer a
     background-image: url("img/inscription.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    
 
 }
 
@@ -317,7 +350,7 @@ footer a
     background-image: url(img/resa.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-   
+    
     
     
 }
@@ -325,16 +358,23 @@ footer a
 #sectionFormReservation{
     background-color: rgb(0, 0, 0, 0.5);
     border : 10px solid white ;
-    height: 300px;
-    padding: 3%;
+    height:20%;
 }
 
 #formReservation{
-    width: 50%;
-    margin : 0 auto;
+    width: 44%;
+    height: 50%;
+    margin: 2% auto;
     background-color: rgb(255, 255, 255, 0.5);
-    padding: 3%;
+    padding: 2% 2%;
     text-align: center;
+    font-size: 1.4vw;
+    font-weight: bold;
+    border-radius: 2em;
+}
+
+#formReservation>input{
+    font-size: 1vw;
 }
 
 .erreurResa{
@@ -362,12 +402,13 @@ footer a
     background-color: rgb(0, 0, 0, 0.5);
     font-size: 30px ;
     margin-top: 5%;
-    margin-bottom: 10%;
 }
 
 
+p{
+    margin: 0 auto 1%;
+}
 
-
 /*-----------------------PROFIL-------------------*/
 /*-----------------------PROFIL-------------------*/
 /*-----------------------PROFIL-------------------*/
@@ -377,11 +418,36 @@ footer a
 /*-----------------------PROFIL-------------------*/
 /*-----------------------PROFIL-------------------*/
 
+#bodyprofil{
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 128, 0, 0.616), rgba(0, 195, 255, 0.63),rgba(0, 132, 255, 0.555));
+    padding-top: 10%;
+    height: auto;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.h3{
+    font-size: xx-large;
+}
+
+.nouvelleresa{
+    font-size:x-large;
+    margin: 100 auto;
+    padding: 1%;
+    width: 20%;
+    background-color: blanchedalmond;
+    border:2px black solid;
+    border-radius: 2em;
+    box-shadow: 3px 3px 15px 3px #000000;
+}
 
 #mainprofil{
-    padding-top: 10%;
+    padding-top: 5%;
     background-image: url(img/profilbackground.jpg);
     background-size: cover; 
+    border-radius: 2em;
 
     
 }
@@ -390,11 +456,14 @@ footer a
 .formulaireprofil{
     width: 30%;
     height: 400px;
-    margin: 0 auto ;
+    margin: 3% auto 5%;
+    padding:1%;
     text-align: center;
     color: white;
     background-color: rgb(232, 13, 12, 0.5);
-    border : 2px black thick double;
+    border-radius: 2em;
+box-shadow: 5px 5px 15px 5px #000000;
+
 }
 
 
@@ -409,40 +478,64 @@ footer a
 }
 
 #reservationUser{
-    margin: 0 auto ;
-    width: 50%;
+    margin: 0 auto 2%;
+    padding:1%;
+    font-size: 1.5vw;
+    width: 30%;
     text-align: center;
-    background-color: rgb(0, 0, 0, 0.5); ;
-    font-size: 20px;
+    background-image:linear-gradient( rgba(255, 255, 255, 0.671),rgba(121, 23, 23, 0.541)) ;
     color: white ;
+    border-radius: 2em;
+    box-shadow: 5px 5px 15px 5px #000000;
+    text-shadow: 3px 5px 2px #000000;
+
+    
 }
 
 #tableauReservationProfil{
     padding-bottom: 10%;
-    margin: 0 auto ;
-    width: 50%;
+    margin: 5% auto ;
+    padding:2% 0%;
+    width: 80%;
+    height: auto;
     text-align: center;
     color: black;
+    border-radius: 2em;
+    background-image: linear-gradient( rgba(189, 253, 169, 0.548),rgba(2, 109, 2, 0.514)) ;
+    box-shadow: 5px 5px 15px 5px #000000;
+
 }
 
 #backprofil{
+    margin: 0.5% 0%;
+    border: 2px black solid;
     font-size: 1vw;
+    border-radius: 1em;
+    background-color: rgba(253, 240, 169, 0.746) ;
 
-    background-color: rgb(253, 228, 82) ;
+
+    /* background-color: rgb(253, 228, 82) ; */
 }
 
 #tableReservationProfil td {
-    border-style: solid;
-    width: 13%;
-    background-color: white ;
+    /* border-style: solid; */
+border-radius: 2em;
+    width: 20%;
+    padding: 1%;
+    
+    /* background-color: white ; */
+    background-color: rgb(253, 228, 82) ;
+
 
 }
 
 
 #tableReservationProfil tr {
-    border-style: solid;
+    /* border-style: solid; */
     width: 13%;
-    background-color: white ;
+    /* background-color: white ; */
+    border-radius: 2em;
+    background-color: rgb(253, 96, 82) ;
 
 }
 
@@ -457,9 +550,10 @@ footer a
 /*-----------------------Planning-------------------*/
 
 #bodyPlanning{
+    text-align: center;
+
     padding-top: 10%;
     background-image: url(img/backplanning.jpg);
-    background-color: black;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -478,6 +572,7 @@ footer a
     width: 70%;
     margin: 0 auto 1%;
     border-collapse: collapse;
+    box-shadow: 4px 4px 13px 4px #ffffff;
    
    
     color :#ffffff;
@@ -522,41 +617,67 @@ footer a
 /*-----------------------Admin-------------------*/
 /*-----------------------Admin-------------------*/
 
-#bodyAdmin{
+
+
+html {
+    height: 100%;
+}
+#bodyAdmin {
+    text-align: center;
+
     padding-top: 10%;
-    background-image: url(img/adminbackground.jpg);
-    background-size: cover ;
-     
+    background-image: linear-gradient(rgba(255, 255, 0, 0.568),rgba(255, 166, 0, 0.644));
+    height: auto;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #titreAdmin{
-    margin: 0 auto ;
+    margin: 3% auto 3%;
     width: 50%;
     text-align: center;
-    background-color: rgb(0, 0, 0, 0.5);
-    color: white ;
-    font-size: 20px ;
+    color: rgb(0, 0, 0) ;
+    font-size: 2vw;
 }
 
 .sectionadmin{
-    
+    text-align: center;
     margin:0px auto 130px;
     width: 50%;
-    height: 280px;
+    height: 400px;
     border: 10px black solid;
     border-radius: 2em 0em 0em 2em;
-    background-color: bisque;
+    background-color: rgba(109, 71, 25, 0.39);
     overflow-y: auto;    
 }
 
+.tableadmin{
+    padding: 1%;
+    font-size: 1vw;
+    margin: 10px auto 30px;
+    background-color: rgba(251, 159, 39, 0.733);
+    text-align: left;
+    border: 2px black solid;
+    border-radius: 1em;
+box-shadow: 5px 5px 15px 5px #000000;
+
+}
 
 .infoEmplacement{
-    margin: 0 auto ;
+    margin: 0 auto 2%;
+    padding: 0% 2% 2%;
+    font-size: 1.5vw;
     width: 50%;
     text-align: center;
     background-color: rgb(0, 0, 0, 0.5);
-    color: white ;
-    font-size: 20px;
+    color: white;
+    border-radius: 2em;
+    border: 4px black solid;
+text-shadow: 3px 5px 2px #000000;
+box-shadow: 5px 5px 15px 5px #000000;
+
+
 }
 
 #modifPrix{
@@ -570,6 +691,8 @@ footer a
     border-radius: 2em;
     font-size: 2vw;
     border:10px rgb(255, 158, 79) solid;
+box-shadow: 5px 5px 15px 5px #000000;
+
 }
 
 .titretarif{
@@ -577,6 +700,7 @@ footer a
     color: gold;
     background-color: indianred;
     border-radius: 0.5em;
+    
 }
 
 .inputtarif{
@@ -588,6 +712,7 @@ footer a
    text-align: center;
    border-radius: 0.5em;
 
+
 }
 
 .inputtarifv{
@@ -596,6 +721,7 @@ footer a
     width: auto;
     font-size: xx-large;
     border-radius: 2em;
+
 }
 
 

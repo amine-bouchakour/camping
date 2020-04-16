@@ -42,14 +42,14 @@
 
 
                                     <br>
-                                    Accès à la borne électrique (<?php echo $tarifborne; ?>€/jr)<input type="radio" name="borne" value="<?php echo $tarifborne ?>"><br>
-                                    Accès au Disco-Club “Les girelles dansantes” (<?php echo $tarifdisco; ?>€/jr)<input type="radio" name="disco" value="<?php echo $tarifdisco ?>"><br>
-                                    Accès aux activités Yoga, Frisbee et Ski Nautique (pack à <?php echo $tarifyfs; ?>€/jr)<input type="radio" name="yfs" value="<?php echo $tarifyfs ?>"><br>
+                                    Accès à la borne électrique (<?php echo $tarifborne; ?>€/jr)<input type="radio" name="borne" value="<?php echo $tarifborne ?>"><br><br>
+                                    Accès au Disco-Club “ <i>Les girelles dansantes</i> ” (<?php echo $tarifdisco; ?>€/jr)<input type="radio" name="disco" value="<?php echo $tarifdisco ?>"><br><br>
+                                    Accès aux activités Yoga, Frisbee et Ski Nautique (pack à <?php echo $tarifyfs; ?>€/jr)<input type="radio" name="yfs" value="<?php echo $tarifyfs ?>"><br><br><br>
                                     <input type="submit" name="valider">
                                 </form>
 
 
-                            </section>
+                            
                       <?php 
                         } 
                         else{
@@ -144,7 +144,7 @@
                                         
                                         $placedispo=$placedispo - 2;
                                         
-                                        //echo '<div class="placeDispo">Il reste '.$placedispo.' place disponible<br/><br/></div>';
+                                        // echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
                                         ++$i;
 
                                     }
@@ -152,7 +152,7 @@
                                     {
                                         $placedispo=$placedispo - 1;
                                         //echo $resultat[$i][0].'<br/>';
-                                        //echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
+                                        // echo '<div class="placeDispo">Il reste '.$placedispo.' de place disponible<br/><br/></div>';
                                         ++$i;
                                     }
 
@@ -208,6 +208,10 @@
                                     $requetereservation="INSERT INTO reservationplace (datedebut,datefin,emplacement,habitat,dureesejour,borne,disco,yfs,prixtotal,id_utilisateur) VALUES ('".$datedebut."','".$datefin."','".$place."','".$habitat."','".$duree."','".$_POST['borne']."','".$_POST['disco']."','".$_POST['yfs']."','".$totalsejour."','".$_SESSION['id']."') ";
                                     $queryreservation=mysqli_query($connexion,$requetereservation);
 
+                                    setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR','fr','fr','fra','fr_FR@euro');
+                                    $dated=strftime('%d %B %Y',strtotime($datedebut));
+                                    $datefin=strftime('%d %B %Y',strtotime($datefin));
+
                                     echo '<section class="infoResaUser">';
                                         echo '<br/>Reservation effectué'.'<br/>'.'<br/>';
                                         echo 'Date d\'entrée en camping : '.$dated.'<br/>';
@@ -252,6 +256,7 @@
 
 
                     ?>
+                    </section>
         </main>
         <?php include('footer.php'); ?>
     </body>
